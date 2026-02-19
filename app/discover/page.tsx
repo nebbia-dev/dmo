@@ -74,16 +74,8 @@ export default async function Discover() {
             <section>
                 <div className="w-[90vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-20 pb-24">
                     <h2 className="font-bold text-4xl mt-8">Le Anime del Territorio</h2>
-                    <p className="w-full mt-8 pl-1">La provincia di Cremona è un racconto di ville, castelli e arte.
-                        A Cremona entri in palazzi storici con saloni affrescati e cortili silenziosi.
-                        Fuori città trovi residenze affascinanti immerse in splendidi parchi : Villa Calciati Crotti,
-                        Villa Sommi Picenardi, Villa Bottini “La Limonaia”, Palazzo Zurla De Poli.
-                        A San Giovanni in Croce visiti Villa Medici del Vascello, legata alla storia di Cecilia
-                        Gallerani. Il giardino romantico è fatto di viali, alberi alti e angoli dove fermarsi un momento
-                        a respirare.
-                        Poi ci sono le rocche e i castelli: la Rocca Sforzesca di Soncino, i camminamenti di
-                        Pizzighettone, il Castello Visconteo di Pandino. Mura, fossati, torri: tutto parla di storia e
-                        bellezza.
+                    <p className="w-full mt-8 pl-1">
+                        {content.data['anime_testo']}
                     </p>
 
                     <div className="mt-12 flex gap-4">
@@ -110,10 +102,7 @@ export default async function Discover() {
                             <div className="flex gap-2">
                                 <div
                                     className="text-sm rounded-xl w-[50%] h-[164px] bg-[#918FC7] py-4 px-8 flex items-center justify-center">
-                                    Il cicloturismo nel territorio di Cremona, Crema e Casalmaggiore offre una varietà di paesaggi
-                                    che si sviluppano tra fiumi, canali e cascine storiche. Un itinerario di oltre 300 chilometri
-                                    lungo piste ciclabili ben segnalate e strade a basso traffico ti permette di scoprire bellezze
-                                    artistiche, natura e specialità gastronomiche locali.
+                                    {content.data['cycling_testo']}
                                 </div>
                                 <Image className="object-cover rounded-xl w-[50%] h-[164px]"
                                        src="/images/stories/town.webp" alt="pic" width={200} height={100}/>
@@ -145,8 +134,7 @@ export default async function Discover() {
                             <div className="flex gap-2">
                                 <div
                                     className="text-sm rounded-xl w-[50%] h-[164px] bg-sky-300 py-4 px-8 flex items-center justify-center">
-                                    Esplora le meravigliose piste ciclabili di Cremona, immerse nella natura e ricche di storia.
-                                    Scopri itinerari adatti a tutti, dai principianti agli esperti, e goditi un'esperienza unica su due ruote.
+                                    {content.data['luthiery_testo']}
                                 </div>
                                 <Image className="object-cover rounded-xl w-[50%] h-[164px]"
                                        src="/images/stories/lab.webp" alt="pic" width={200} height={100}/>

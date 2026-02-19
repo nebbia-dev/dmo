@@ -1,0 +1,101 @@
+'use client'
+
+import {useState} from "react";
+import Image from "next/image";
+import Markdown from "react-markdown";
+import {Close} from "@/app/_components/_icons/Close";
+
+export default function Composers({info}: {info:any}) {
+    const [showModal, setShowModal] = useState({
+        show: false,
+        text: 0
+    })
+
+    function showModalBio(n:number) {
+        setShowModal({show: (n !== 0), text: n})
+    }
+
+    return (
+        <>
+            <div
+                className="mb-4">
+                <ul className="flex items-center gap-[2%]">
+                    <li className="h-[500px] w-[32%] relative">
+                        <Image width={300} height={300}
+                               src={process.env.NEXT_PUBLIC_BASE_URL + info['compositore_1'][0].immagine.url}
+                               alt={info['compositore_1'][0].immagine.alternativeText}
+                               className="w-full h-full object-cover rounded-xl"
+                        />
+                        <div
+                            className="rounded-xl absolute bg-corpo-blue text-white bottom-0 font-bold text-2xl py-4 px-4 h-[150px] w-full">
+                            <h5>{info['compositore_1'][0]['nome']}</h5>
+                            <div className="w-full text-right">
+                                <button
+                                    className="absolute bottom-4 right-4 cursor-pointer font-medium text-sm text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-4 py-2"
+                                    onClick={() => showModalBio(1)}
+                                >Leggi
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li className="h-[500px] w-[32%] relative">
+                        <Image width={300} height={300}
+                               src={process.env.NEXT_PUBLIC_BASE_URL + info['compositore_2'][0].immagine.url}
+                               alt={info['compositore_2'][0].immagine.alternativeText}
+                               className="w-full h-full object-cover rounded-xl"
+                        />
+                        <div
+                            className="rounded-xl absolute bg-corpo-blue text-white bottom-0 font-bold text-2xl py-4 px-4 h-[150px] w-full">
+                            <h5>{info['compositore_2'][0]['nome']}</h5>
+                            <div className="w-full text-right">
+                                <button
+                                    className="absolute bottom-4 right-4 cursor-pointer font-medium text-sm text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-4 py-2"
+                                    onClick={() => showModalBio(2)}
+                                >Leggi
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li className="h-[500px] w-[32%] relative">
+                        <Image width={300} height={300}
+                               src={process.env.NEXT_PUBLIC_BASE_URL + info['compositore_3'][0].immagine.url}
+                               alt={info['compositore_3'][0].immagine.alternativeText}
+                               className="w-full h-full object-cover rounded-xl"
+                        />
+                        <div
+                            className="rounded-xl absolute bg-corpo-blue text-white bottom-0 font-bold text-2xl py-4 px-4 h-[150px] w-full">
+                            <h5>{info['compositore_3'][0]['nome']}</h5>
+                            <div className="w-full text-right">
+                                <button
+                                    className="absolute bottom-4 right-4 cursor-pointer font-medium text-sm text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-4 py-2"
+                                    onClick={() => showModalBio(3)}
+                                >Leggi
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            {
+                showModal.show &&
+                <div className="top-0 left-0 fixed z-20 w-screen h-screen bg-gray-500/25">
+                        <div className="pt-8 pb-12 pl-8 pr-2 shadow-md relative top-50 left-[50%] translate-x-[-50%] bg-corpo-blue text-white rounded-xl w-2/4">
+                            <div className="max-h-[516px] overflow-y-auto pr-6">
+                                <div className="w-full flex justify-end">
+                                    <Close onClick={() => showModalBio(0)} className="cursor-pointer"/>
+                                </div>
+                                <div className="markdown">
+                                    <Markdown>
+                                        {info['compositore_' + showModal.text][0]['bio']}
+                                    </Markdown>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            }
+        </>
+    )
+}

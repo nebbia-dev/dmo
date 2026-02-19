@@ -5,8 +5,22 @@ import Link from "next/link";
 import Event from "@/app/_components/Event";
 import LocalMap from "@/app/_components/LocalMap";
 import {PDF} from "@/app/_components/_icons/PDF";
+import Markdown from "react-markdown";
 
-export default function Cycling() {
+export default async function Cycling() {
+
+    let content;
+
+    try {
+        let data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/cicloturismo'+
+                '?populate[0]=elements',
+            { next: { revalidate: 1000 }});
+        content = await data.json();
+        console.log(content.data)
+    } catch(error) {
+        console.log(error);
+    }
+
     return (
         <>
             <section className="mt-[79px] fadein-slower">
@@ -16,16 +30,13 @@ export default function Cycling() {
                     <div
                         className="flex flex-col md:flex-row gap-20">
 
-                        <div className="w-full h-[500px] md:w-2/4 md:h-auto">
+                        <div className="w-full h-auto md:w-2/4 ">
                             <TalesLogo theme="cycling"/>
                         </div>
 
                         <div className="flex flex-col gap-2 w-full md:w-2/4">
-                            <p className="w-full mt-2 pl-1 whitespace-pre-line">
-                                Pedalare nel territorio di Cremona, Crema e Casalmaggiore significa cambiare paesaggio senza cambiare ritmo.
-                                Ti muovi tra argini, canali, strade di campagna e cascine storiche. In totale hai oltre 300 chilometri di
-                                percorsi: piste ciclabili segnalate e tratti a basso traffico dove la bici è a suo agio. Lungo il tragitto
-                                incontri borghi, corti agricole, piccoli musei e soste dove assaggiare i prodotti locali.
+                            <p className="w-full mt-2 pl-1 markdown">
+                            {content.data.elements.intro}
                             </p>
                         </div>
                     </div>
@@ -34,24 +45,23 @@ export default function Cycling() {
                 <div
                     className="flex flex-col md:flex-row gap-20 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-12 pb-4">
                     <div className="flex flex-col gap-2 w-full md:w-2/4">
-                        <h2 className="font-bold text-4xl mt-8">Sali in sella!</h2>
-                        <div className="w-full mt-2 pl-1 whitespace-pre-line">
-                            <h4 className="font-semibold pt-4 pb-2">Cremona e dintorni</h4>
-                            A Cremona inizi dal centro: passi sotto il Torrazzo e arrivi al Museo del Violino. Poi lasci la città e segui la rete di ciclabili e strade minori sugli argini del Po e dell’Adda. Il percorso entra in riserve naturali e ti porta in borghi come Pizzighettone, Torre de’ Picenardi e Castelleone. Qui la pianura è ampia, l’orizzonte è basso e la strada scorre.
-
-                            <h4 className="font-semibold pt-4 pb-2">Crema e il Cremasco</h4>
-                            Il Cremasco è pianeggiante e facile da percorrere anche con calma. Crema è il punto di partenza ideale. Uno dei tratti più amati segue l’alzaia del Canale Vacchelli: attraversi i fontanili e il Parco del Serio, tra campi, filari di pioppi e piccoli borghi. Se ti va una deviazione nella storia, arrivi ai castelli di Pandino e Soncino.
-
-                            <h4 className="font-semibold pt-4 pb-2">Casalasco e Casalmaggiore</h4>
-                            Nel Casalasco pedali tra Po e Oglio, con ambienti fluviali che cambiano colore durante l’anno. Gli itinerari attraversano oasi e riserve naturali e toccano paesi sull’acqua e luoghi di archeologia industriale. Sullo sfondo trovi ville storiche come Villa Medici del Vascello e Villa Mina della Scala, immerse nel paesaggio di campagna.
+                        <h2 className="font-bold text-4xl mt-8">
+                            {content.data.elements.titolo}
+                        </h2>
+                        <div className="w-full mt-4 pl-1 markdown">
+                            <Markdown>
+                                {content.data.elements.descrizione}
+                            </Markdown>
                         </div>
                     </div>
 
-                    <div className="w-full h-[500px] md:w-2/4 md:h-auto">
-                        <div
-                            className="relative top-[calc(100%-200px)] h-[200px] w-full bg-pastel-yellow border border-yellow-500 rounded-xl flex items-center justify-center">
-                            Widget meteo
-                        </div>
+                    <div className="w-full h-[500px] md:w-2/4 md:h-auto relative">
+                        <iframe width="100%" height="315"
+                                className="rounded-xl absolute bottom-0"
+                                src="https://www.youtube.com/embed/5PFbSF4gw4U?si=uky2Nd3dY5FiZFNj"
+                                title="YouTube video player" frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                     </div>
                 </div>
             </section>

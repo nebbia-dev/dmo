@@ -3,7 +3,7 @@ import {useState} from "react";
 import Link from "next/link";
 import AnimatedHoverButton from "@/app/_components/AnimatedHoverButton";
 
-export default function Stories() {
+export default function Stories({gallery, description} : {description: string, gallery:any[]}) {
 
     const [disabled, setDisabled] = useState<boolean>(false);
     const [images, setImages] = useState<string[]>(['colomba.webp', 'lab.webp', 'monument.webp', 'museum.webp', 'town.webp']);
@@ -26,18 +26,19 @@ export default function Stories() {
     return (
         <div className="w-[90%] ml-[12.5%] mt-4 flex gap-4">
             <div className="w-[25%] h-auto">
-                <img id="col-img-now" className="rounded-xl w-full h-full object-cover" src={`/images/stories/${images[0]}`} alt="monumenti"/>
+                <img id="col-img-now" className="rounded-xl w-full h-full object-cover"
+                     src={process.env.NEXT_PUBLIC_BASE_URL + gallery[0].url} alt={gallery[0].alternativeText}/>
             </div>
             <div className="w-[75%] flex flex-col items-end bg-[#f0f8ff] relative z-10">
                 <div className="flex gap-2">
-                    <img id="first-img" className="rounded-xl w-[30%] h-[400px] object-cover" src={`/images/stories/${images[1]}`}
-                    alt="colomba"/>
-                    <img id="second-img" className="rounded-xl w-[30%] h-[400px] object-cover" src={`/images/stories/${images[2]}`}
-                    alt="paese"/>
-                    <img id="third-img" className="rounded-xl w-[30%] h-[400px] object-cover" src={`/images/stories/${images[3]}`}
-                    alt="laboratorio di liuteria"/>
-                    <img id="fourth-img" className="rounded-l-xl w-[10%] h-[400px] object-cover" src={`/images/stories/${images[4]}`}
-                    alt="famiglia al museo"/>
+                    <img id="first-img" className="rounded-xl w-[30%] h-[400px] object-cover"
+                         src={process.env.NEXT_PUBLIC_BASE_URL + gallery[1].url} alt={gallery[1].alternativeText}/>
+                    <img id="second-img" className="rounded-xl w-[30%] h-[400px] object-cover"
+                         src={process.env.NEXT_PUBLIC_BASE_URL + gallery[2].url} alt={gallery[2].alternativeText}/>
+                    <img id="third-img" className="rounded-xl w-[30%] h-[400px] object-cover"
+                         src={process.env.NEXT_PUBLIC_BASE_URL + gallery[3].url} alt={gallery[3].alternativeText}/>
+                    <img id="fourth-img" className="rounded-l-xl w-[10%] h-[400px] object-cover"
+                         src={process.env.NEXT_PUBLIC_BASE_URL + gallery[4].url} alt={gallery[4].alternativeText}/>
                 </div>
                 <div
                     className="w-[95%] pt-12 pb-8 pl-4 pr-[calc(20%+(0.25rem*8))] flex items-center gap-12 bg-[#f0f8ff] relative z-10">
@@ -47,9 +48,8 @@ export default function Stories() {
                 </button>
                 <div>
                     <h2 className="font-bold text-3xl">Le storie del territorio</h2>
-                    <p className="mt-4">Proin ut nulla aliquet, commodo dolor eu, dictum quam. Phasellus id varius nulla.
-                        Proin at lectus gravida urna congue congue vel eget lectus. Maecenas eleifend mi vitae libero
-                        sodales varius.
+                    <p className="mt-4">
+                        {description}
                     </p>
                     <div className="w-full text-right mt-8">
                         <Link href="/stories" className="font-bold underline relative">

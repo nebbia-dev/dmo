@@ -14,20 +14,28 @@ import ContactForm from "@/app/_components/ContactForm";
 export default async function Home() {
     const arrData = [...data.cycling, ...data.luthiery];
 
-    let content;
+    let content, contentLinks;
     try {
         let data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/homepage' +
-            '?populate[0]=esperienza_1.immagine' +
-            '&populate[1]=esperienza_2.immagine' +
-            '&populate[2]=esperienza_3.immagine' +
-            '&populate[3]=hero_carosello' +
-            '&populate[4]=sub_hero_video' +
-            '&populate[5]=card_1' +
-            '&populate[6]=card_2' +
-            '&populate[7]=visit_cards_immagine',
+            '?populate[0]=hero_carosello' +
+            '&populate[1]=sub_hero_video' +
+            '&populate[2]=card_1' +
+            '&populate[3]=card_2' +
+            '&populate[4]=visit_cards_immagine' +
+            '&populate[5]=esperienze_classiche' +
+            '&populate[6]=esperienze_contemporanee' +
+            '&populate[7]=esperienze_uniche.immagine' +
+            '&populate[8]=esperienze_uniche' +
+            '&populate[9]=stories_gallery' +
+            '&populate[10]=social_immagine',
             { next: { revalidate: 1000 }}
         );
         content = await data.json();
+
+        let dataLinks = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/link',
+            { next: { revalidate: 1000 }});
+        contentLinks = await dataLinks.json();
+
     } catch(error) {
         console.log(error);
     }
@@ -64,44 +72,6 @@ export default async function Home() {
               <h2 className="font-bold text-4xl mt-8 mb-12">Scopri cosa offre il territorio vicino a te</h2>
               <LocalMap homepage={true} autoFilter={0}/>
           </section>
-
-          {/*<section className="w-full bg-corpo-blue text-white">*/}
-          {/*<div className="flex flex-col gap-16 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-16">*/}
-          {/*        <h2 className="font-bold text-4xl mt-8 w-full text-center md:text-left">{content.data['esperienze_titolo']}</h2>*/}
-
-          {/*        <div className="flex flex-col md:flex-row gap-4 justify-center">*/}
-          {/*            <ExperienceCard*/}
-          {/*                title={content.data['esperienza_1'][0]['nome']}*/}
-          {/*                subtitle={content.data['esperienza_1'][0]['sottotitolo']}*/}
-          {/*                description={content.data['esperienza_1'][0]['descrizione']}*/}
-          {/*                background='yellow'*/}
-          {/*                pic={[*/}
-          {/*                    process.env.NEXT_PUBLIC_BASE_URL + content.data['esperienza_1'][0]['immagine'].url,*/}
-          {/*                    content.data['esperienza_1'][0]['immagine'].alternativeText]}*/}
-          {/*            />*/}
-
-          {/*            <ExperienceCard*/}
-          {/*                title={content.data['esperienza_2'][0]['nome']}*/}
-          {/*                subtitle={content.data['esperienza_2'][0]['sottotitolo']}*/}
-          {/*                description={content.data['esperienza_2'][0]['descrizione']}*/}
-          {/*                background='orange'*/}
-          {/*                pic={[*/}
-          {/*                    process.env.NEXT_PUBLIC_BASE_URL + content.data['esperienza_2'][0]['immagine'].url,*/}
-          {/*                    content.data['esperienza_2'][0]['immagine'].alternativeText]}*/}
-          {/*            />*/}
-
-          {/*            <ExperienceCard*/}
-          {/*                title={content.data['esperienza_3'][0]['nome']}*/}
-          {/*                subtitle={content.data['esperienza_3'][0]['sottotitolo']}*/}
-          {/*                description={content.data['esperienza_3'][0]['descrizione']}*/}
-          {/*                background='pink'*/}
-          {/*                pic={[*/}
-          {/*                    process.env.NEXT_PUBLIC_BASE_URL + content.data['esperienza_3'][0]['immagine'].url,*/}
-          {/*                    content.data['esperienza_1'][0]['immagine'].alternativeText]}*/}
-          {/*            />*/}
-          {/*        </div>*/}
-          {/*    </div>*/}
-          {/*</section>*/}
 
           <section className="flex flex-col gap-8 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24">
               <div className="flex flex-col min-[1200px]:flex-row items-center relative">
@@ -147,11 +117,8 @@ export default async function Home() {
               <div
                   className="flex flex-col gap-16 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
                   <div className="flex justify-between">
-                      <h2 className="font-bold text-4xl w-full text-center md:text-left break-title">Esperienze
-                          Classiche</h2>
-                      <p className="max-w-[40vw]">Scoprire Cremona attraverso i suoi monumenti monumenti principali, i musei e le peculiarità che l'hanno resa famosa nel mondo,
-                          musica e la liuteria, arte, palazzi e dimore storiche attraverso visite guidate sempre disponibili per turisti e visitatori.
-                      </p>
+                      <h2 className="font-bold text-4xl w-full text-center md:text-left break-title">{content.data['esperienze_classiche'][0]['nome']}</h2>
+                      <p className="max-w-[40vw]">{content.data['esperienze_classiche'][0]['descrizione']}</p>
                   </div>
 
                   <div className="flex gap-4 justify-end">
@@ -177,11 +144,8 @@ export default async function Home() {
               <div
                   className="flex flex-col gap-16 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
                   <div className="flex justify-between">
-                      <h2 className="font-bold text-4xl w-full text-center md:text-left break-title">Esperienze
-                          Contemporanee</h2>
-                      <p className="max-w-[40vw]">Approfondire la conoscenza di Cremona e del suo territorio vivendola in modi diversi e speciali con visite guidate tematiche, degustazioni,
-                          itinerari in bicicletta e in barca e molto altro, a ritmi più lenti, tempi diversi e personalizzati.
-                      </p>
+                      <h2 className="font-bold text-4xl w-full text-center md:text-left break-title">{content.data['esperienze_contemporanee'][0]['nome']}</h2>
+                      <p className="max-w-[40vw]">{content.data['esperienze_contemporanee'][0]['descrizione']}</p>
                   </div>
 
                   <div className="flex gap-4 justify-end">
@@ -207,30 +171,22 @@ export default async function Home() {
               <div
                   className="flex flex-col gap-16 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
                   <div className="flex justify-between">
-                      <h2 className="font-bold text-4xl w-full text-center md:text-left break-title">Esperienze
-                          Uniche</h2>
-                      <p className="max-w-[40vw]">Una vera e propria immersione nel territorio cremonese, con esperienze esclusive che coniugano storia e arte, musica e gastronomia,
-                          natura e ambiente, rendendo ognuna indimenticabile e da fissare nei ricordi.
+                      <h2 className="font-bold text-4xl w-full text-center md:text-left break-title">{content.data['esperienze_uniche'][0]['nome']}</h2>
+                      <p className="max-w-[40vw]">{content.data['esperienze_uniche'][0]['descrizione']}
                       </p>
                   </div>
 
                   <div className="flex gap-4 justify-end">
-                      {
-                          arrData.filter(el => el.tipo === 'UN').map((el, i) => {
-                              if (i < 1) {
-                                  return (
-                                      <div key={el.titolo} className="relative w-full">
-                                          <div
-                                              className="absolute rounded-tr-xl rounded-bl-xl font-bold left-[1px] bottom-[1px] p-2 text-sm bg-white">{el.titolo}</div>
-                                          <Image
-                                              className="border border-orange-500 rounded-xl w-full h-[50vh] object-cover"
-                                              alt="exp unica" src={`/images/experiences/${el.immagine}`} width={800}
-                                              height={400}/>
-                                      </div>
-                                  )
-                              }
-                          })
-                      }
+                      <div className="relative w-full">
+                          <div
+                              className="absolute rounded-tr-xl rounded-bl-xl font-bold left-[1px] bottom-[1px] p-2 text-sm bg-white">{content.data['esperienze_uniche'][0]['titolo']}</div>
+                          <Image
+                              className="border border-orange-500 rounded-xl w-full h-[50vh] object-cover"
+                              alt="exp unica"
+                              src={process.env.NEXT_PUBLIC_BASE_URL + content.data['esperienze_uniche'][0].immagine.url}
+                              width={800}
+                              height={400}/>
+                      </div>
                   </div>
 
                   <div className="w-full text-right">
@@ -263,30 +219,39 @@ export default async function Home() {
           </section>
 
           <section className="flex flex-col gap-8 w-full justify-center pb-24">
-              <Stories/>
+              <Stories description={content.data['stories_testo']} gallery={content.data['stories_gallery']}/>
           </section>
 
           <section className="w-full bg-pastel-yellow">
               <div className="flex w-[90vw] md:w-[80vw] mx-auto justify-between px-4 md:px-8 pt-20">
                   <div className="w-2/4 flex flex-col gap-8 justify-center">
-                      <h2 className="font-bold text-3xl">Segui le armonie del territorio cremonese sui nostri canali
-                          social</h2>
+                      <h2 className="font-bold text-3xl">
+                          {content.data['social_titolo']}
+                      </h2>
                       <div className="flex gap-4 pb-16">
-                          <div
+                          {contentLinks.data.facebook &&
+                              <a href={contentLinks.data.facebook} target="_blank"
                               className="flex items-center justify-center w-12 h-12 border-1 border-slate-950 rounded-xl font-bold text-2xl">F
-                          </div>
-                          <div
-                              className="flex items-center justify-center w-12 h-12 border-1 border-slate-950 rounded-xl font-bold text-2xl">I
-                          </div>
-                          <div
-                              className="flex items-center justify-center w-12 h-12 border-1 border-slate-950 rounded-xl font-bold text-2xl">W
-                          </div>
-                          <div
-                              className="flex items-center justify-center w-12 h-12 border-1 border-slate-950 rounded-xl font-bold text-2xl">Y
-                          </div>
+                              </a>
+                          }
+                          {contentLinks.data.instagram &&
+                              <a href={contentLinks.data.instagram} target="_blank"
+                                 className="flex items-center justify-center w-12 h-12 border-1 border-slate-950 rounded-xl font-bold text-2xl">I
+                              </a>
+                          }
+                          {contentLinks.data.whatsapp &&
+                              <a href={contentLinks.data.whatsapp} target="_blank"
+                                 className="flex items-center justify-center w-12 h-12 border-1 border-slate-950 rounded-xl font-bold text-2xl">W
+                              </a>
+                          }
+                          {contentLinks.data.youtube &&
+                              <a href={contentLinks.data.youtube} target="_blank"
+                                 className="flex items-center justify-center w-12 h-12 border-1 border-slate-950 rounded-xl font-bold text-2xl">Y
+                              </a>
+                          }
                       </div>
                   </div>
-                  <img className="w-1/3" src="/images/stories/insta.webp" alt="pagina instagram"/>
+                  <img className="w-1/3" src={process.env.NEXT_PUBLIC_BASE_URL + content.data['social_immagine'].url} alt={content.data['social_immagine'].alternativeText}/>
               </div>
           </section>
 
@@ -299,30 +264,6 @@ export default async function Home() {
                   <ContactForm newsletter={true}/>
               </div>
           </section>
-
-          {/*<section className="w-full bg-alt-blue text-white">*/}
-          {/*    <div*/}
-          {/*        className="flex flex-col md:flex-row gap-20 md:gap-16 w-[90vw] md:w-[80vw] mx-auto justify-center items-center px-4 md:px-8 pt-16 pb-20 md:pb-24">*/}
-          {/*        <div className="flex flex-col text-center md:text-start w-full md:w-2/4">*/}
-          {/*            <h2 className="font-bold text-4xl mt-8">{content.data['chi_siamo_titolo']}</h2>*/}
-          {/*            <p className="w-full mt-8 pl-1 whitespace-pre-line text-xl">{content.data['chi_siamo_descrizione']}</p>*/}
-          {/*            <div className="w-full text-center md:text-right mt-12 md:mt-8">*/}
-          {/*                <Link href='/who'*/}
-          {/*                      className="text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full p-4">Scopri*/}
-          {/*                    di più &gt;</Link>*/}
-          {/*            </div>*/}
-          {/*        </div>*/}
-          {/*        <div className="w-full md:w-2/4 md:h-[20vh] relative mb-8">*/}
-          {/*            <Image*/}
-          {/*                src='/logo.webp'*/}
-          {/*                alt="visit-cremona-logo"*/}
-          {/*                width={500}*/}
-          {/*                height={500}*/}
-          {/*                className="max-w-[75%] mx-auto"*/}
-          {/*            />*/}
-          {/*        </div>*/}
-          {/*    </div>*/}
-          {/*</section>*/}
       </>
   );
 }
