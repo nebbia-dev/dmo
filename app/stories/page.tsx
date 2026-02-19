@@ -1,6 +1,16 @@
-import data from '@/utils/stories.json'
 import StoryCard from "@/app/_components/StoryCard";
-export default function Stories() {
+export default async function Stories() {
+
+    let content;
+
+    try {
+        let data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/stories?populate=*',
+            { next: { revalidate: 1000 }});
+        content = await data.json();
+        console.log(content.data)
+    } catch(error) {
+        console.log(error);
+    }
 
     return(
         <section className="mt-[79px] fadein-slower">
@@ -11,8 +21,8 @@ export default function Stories() {
 
                 <div className="flex gap-4 flex-wrap w-full">
                     {
-                        data.map(el => {
-                            return <StoryCard el={el} key={el.testo}/>
+                        content.data.map((el:any) => {
+                            return <StoryCard el={el} key={el.id}/>
                         })
                     }
                 </div>

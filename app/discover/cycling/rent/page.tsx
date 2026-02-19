@@ -1,6 +1,18 @@
 import InfoCard from "@/app/_components/InfoCard";
 
-export default function Rent() {
+export default async function Rent() {
+
+    let content;
+
+    try {
+        let data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/rents',
+            { next: { revalidate: 1000 }});
+        content = await data.json();
+        console.log(content.data)
+    } catch(error) {
+        console.log(error);
+    }
+
     return (
         <>
             <section className="mt-[79px] fadein-slower">
@@ -10,98 +22,44 @@ export default function Rent() {
                     </p>
                     <h2 className="font-bold text-4xl mt-10 mb-8">Strutture per il noleggio</h2>
 
-
                 <div className="flex gap-4 flex-wrap">
-                        <InfoCard
-                            name="Spaccabici"
-                            address="Via del Sale, 46 - 26100 Cremona CR"
-                            phone="0372 431966"
-                            email="spaccabici@gmail.com"
-                            url="https://nextjs.org/docs/app/guides/mdx"
-                        >
-                        <div className="flex gap-4 w-full">
-                            <ul>
-                                <li>Lunedi</li>
-                                <li>Martedi</li>
-                                <li>Mercoledi</li>
-                                <li>Giovedi</li>
-                                <li>Venerdi</li>
-                                <li>Sabato</li>
-                                <li>Domenica</li>
-                            </ul>
-                            <ul className="w-full">
-                            <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:00 - 12:00 | 15:00 - 18:00</li>
-                            <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:00 - 12:00 | 15:00 - 18:00</li>
-                            <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:00 - 12:00 | 15:00 - 18:00</li>
-                            <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:00 - 12:00 | 15:00 - 18:00</li>
-                            <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:00 - 12:00 | 15:00 - 18:00</li>
-                            <li className="text-ellipsis whitespace-nowrap overflow-x-auto">Chiuso</li>
-                            <li className="text-ellipsis whitespace-nowrap overflow-x-auto">Chiuso</li>
-                            </ul>
-                        </div>
-                        </InfoCard>
-
-                    <InfoCard
-                        name="Bicicletta & Co."
-                        address="Piazza Libertà, 12 - 26100 Cremona CR"
-                        phone="0372 987654"
-                        email="info@biciclettaeco.com"
-                        url="https://nextjs.org/docs/app/guides/mdx"
-                    >
-                        <div className="flex gap-4 w-full">
-                            <ul>
-                                <li>Lunedi</li>
-                                <li>Martedi</li>
-                                <li>Mercoledi</li>
-                                <li>Giovedi</li>
-                                <li>Venerdi</li>
-                                <li>Sabato</li>
-                                <li>Domenica</li>
-                            </ul>
-                            <ul className="w-full">
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">10:00 - 13:00 | 16:00 - 19:00</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">10:00 - 13:00 | 16:00 - 19:00</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">10:00 - 13:00 | 16:00 - 19:00</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">10:00 - 13:00 | 16:00 - 19:00</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">10:00 - 13:00 | 16:00 - 19:00</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:00 - 12:00</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">Chiuso</li>
-                            </ul>
-                        </div>
-                    </InfoCard>
-
-                    <InfoCard
-                        name="CicloSport"
-                        address="Corso Garibaldi, 25 - 26100 Cremona CR"
-                        phone="0372 123456"
-                        email="contact@ciclosport.com"
-                        url="https://nextjs.org/docs/app/guides/mdx"
-                    >
-                        <div className="flex gap-4 w-full">
-                            <ul>
-                                <li>Lunedi</li>
-                                <li>Martedi</li>
-                                <li>Mercoledi</li>
-                                <li>Giovedi</li>
-                                <li>Venerdi</li>
-                                <li>Sabato</li>
-                                <li>Domenica</li>
-                            </ul>
-                            <ul className="w-full">
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:30 - 12:30 | 14:30 - 17:30</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:30 - 12:30 | 14:30 - 17:30</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:30 - 12:30 | 14:30 - 17:30</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:30 - 12:30 | 14:30 - 17:30</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:30 - 12:30 | 14:30 - 17:30</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">9:00 - 12:00</li>
-                                <li className="text-ellipsis whitespace-nowrap overflow-x-auto">Chiuso</li>
-                            </ul>
-                        </div>
-                    </InfoCard>
+                    {content.data.map((el:any) => {
+                        return(
+                            <InfoCard
+                                key={el.nome}
+                                name={el.nome}
+                                address={el.indirizzo}
+                                phone={el.telefono}
+                                email={el.telefono}
+                                url={el.link}
+                            >
+                                <div className="flex gap-4 w-full">
+                                    <ul>
+                                        <li>Lunedi</li>
+                                        <li>Martedi</li>
+                                        <li>Mercoledi</li>
+                                        <li>Giovedi</li>
+                                        <li>Venerdi</li>
+                                        <li>Sabato</li>
+                                        <li>Domenica</li>
+                                    </ul>
+                                    <ul className="w-full">
+                                        <li className="text-ellipsis whitespace-nowrap overflow-x-auto">{el.lun}</li>
+                                        <li className="text-ellipsis whitespace-nowrap overflow-x-auto">{el.mar}</li>
+                                        <li className="text-ellipsis whitespace-nowrap overflow-x-auto">{el.mer} </li>
+                                        <li className="text-ellipsis whitespace-nowrap overflow-x-auto">{el.gio}</li>
+                                        <li className="text-ellipsis whitespace-nowrap overflow-x-auto">{el.ven}</li>
+                                        <li className="text-ellipsis whitespace-nowrap overflow-x-auto">{el.sab}</li>
+                                        <li className="text-ellipsis whitespace-nowrap overflow-x-auto">{el.dom}</li>
+                                    </ul>
+                                </div>
+                            </InfoCard>
+                        )
+                    })
+                    }
                 </div>
                 </div>
             </section>
-
         </>
     )
 }

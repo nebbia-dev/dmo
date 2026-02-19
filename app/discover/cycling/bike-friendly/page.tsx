@@ -1,6 +1,18 @@
 import InfoCard from "@/app/_components/InfoCard";
 
-export default function BikeFriendly() {
+export default async function BikeFriendly() {
+
+    let content;
+
+    try {
+        let data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/bike-friendlies',
+            { next: { revalidate: 1000 }});
+        content = await data.json();
+        console.log(content.data)
+    } catch(error) {
+        console.log(error);
+    }
+
     return (
         <>
             <section className="mt-[79px] fadein-slower">
@@ -12,32 +24,18 @@ export default function BikeFriendly() {
 
 
                     <div className="flex gap-4 flex-wrap">
-                        <InfoCard
-                            name="Bed & Bike Cremona"
-                            address="Via Roma 90 - Crotta D’Adda (CR)"
-                            phone="+39 331 7914435"
-                            email="info@bedandbikecremona.it"
-                            url="https://nextjs.org/docs/app/guides/mdx"
-                        >
-                        </InfoCard>
-
-                        <InfoCard
-                            name="Velo & Relax Cremona"
-                            address="Piazza Virgiliana - 26100 Cremona (CR)"
-                            phone="+39 0376 28899"
-                            email="info@veloerelax.it"
-                            url="https://nextjs.org/docs/app/guides/mdx"
-                        >
-                        </InfoCard>
-
-                        <InfoCard
-                            name="Bici & Natura"
-                            address="Viale Rimembranze - 26100 Cremona (CR)"
-                            phone="+39 0371 420876"
-                            email="info@bicieNatura.it"
-                            url="https://nextjs.org/docs/app/guides/mdx"
-                        >
-                        </InfoCard>
+                        {content.data.map((el:any) => {
+                            return(
+                                <InfoCard
+                                    key={el.nome}
+                                    name={el.nome}
+                                    address={el.indirizzo}
+                                    phone={el.telefono}
+                                    email={el.email}
+                                    url={el.link}
+                                />
+                            )
+                        })}
                     </div>
                 </div>
             </section>

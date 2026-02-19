@@ -1,30 +1,41 @@
-import data from '@/utils/stories.json';
 import exp from '@/utils/experiences.json';
 import Markdown from "react-markdown";
 import Image from "next/image";
 import SingleExperienceCard from "@/app/_components/SingleExperienceCard";
 export default async function Story({params}: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params;
-    const story = data.filter(el => el.slug === slug);
+
+    let content;
+
+    try {
+        const { slug } = await params;
+        let data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/stories/'+ slug +'?populate=*',
+            { next: { revalidate: 1000 }});
+        content = await data.json();
+        console.log(content)
+    } catch(error) {
+        console.log(error);
+    }
+
     const arrData = [...exp.cycling, ...exp.luthiery];
+
     return(
         <>
         <section className="mt-[79px] fadein-slower">
             <div className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-20 pb-24">
                 <p className="text-sm mb-10"><span
-                    className="font-semibold">Home / Stories /</span> {story[0].titolo}
+                    className="font-semibold">Home / Stories /</span> {content.data.titolo}
                 </p>
 
                 <div className="flex gap-16">
                     <div className="w-[40%] h-[600px]">
-                        <Image src={`/images/stories/${story[0].immagine}`} alt="pic" width={200} height={600}
+                        <Image src={process.env.NEXT_PUBLIC_BASE_URL + content.data.immagine.url} alt={content.data.immagine.alternativeText} width={200} height={600}
                         className="w-full h-full object-cover rounded-xl"
                         />
                     </div>
                     <div className="w-[60%] markdown">
-                        <h2 className="font-bold text-2xl mb-8">{story[0].titolo}</h2>
+                        <h2 className="font-bold text-2xl mb-8">{content.data.titolo}</h2>
                         <Markdown>
-                            {story[0].testo}
+                            {content.data.contenuto}
                         </Markdown>
                     </div>
                 </div>
