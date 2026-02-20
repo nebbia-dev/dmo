@@ -4,7 +4,7 @@ import Image from "next/image";
 import Newsreel from "@/app/_components/Newsreel";
 
 export default async function Who() {
-    let content;
+    let content, contentNews;
     try {
         let data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/who' +
             '?populate[0]=tales_of_1.immagine' +
@@ -26,11 +26,15 @@ export default async function Who() {
             { next: { revalidate: 1000 }}
         );
         content = await data.json();
+
+        let dataNews = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/news?populate=*',
+            { next: { revalidate: 1000 }});
+        contentNews = await dataNews.json();
+        console.log(contentNews.data)
+
     } catch(error) {
         console.log(error);
     }
-
-
 
   return (
       <>
@@ -48,7 +52,7 @@ export default async function Who() {
               <div className="flex flex-col gap-2 w-full">
                   <h2 className="font-bold text-4xl my-8">News</h2>
 
-                  <Newsreel/>
+                  <Newsreel content={contentNews.data}/>
 
               </div>
           </section>

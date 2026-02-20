@@ -1,24 +1,23 @@
 'use client'
-import data from "@/utils/news.json"
 import NewsCard from "@/app/_components/NewsCard";
 import {useState} from "react";
-export default function Newsreel() {
+export default function Newsreel({content}:{content:any}) {
 
     const [boundary, setBoundary] = useState<number>(0);
 
     function changePage(step: 'prev' | 'next') {
         if (step === 'prev') {
             if (boundary - 2 < 0) {
-                if (data.length % 2 === 0) {
-                    setBoundary(data.length - 2);
+                if (content.length % 2 === 0) {
+                    setBoundary(content.length - 2);
                 } else {
-                    setBoundary(data.length - 1);
+                    setBoundary(content.length - 1);
                 }
             } else {
                 setBoundary(prev => prev - 2);
             }
         } else {
-            if (boundary + 2 >= data.length) {
+            if (boundary + 2 >= content.length) {
                 setBoundary(0);
             } else {
                 setBoundary(prev => prev + 2);
@@ -31,10 +30,10 @@ export default function Newsreel() {
             <div className="flex gap-4">
 
                 {
-                    data.map((el, i) => {
+                    content.map((el:any, i:number) => {
                         if (i >= boundary && i <= boundary + 1) {
                             return (
-                                <NewsCard el={el} key={el.slug + Math.random()}/>
+                                <NewsCard el={el} key={el.documentId}/>
                             )
                         }
                     })
