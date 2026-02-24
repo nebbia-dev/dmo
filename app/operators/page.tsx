@@ -20,7 +20,7 @@ export default function Operators() {
                                 placeholder="Password"
                                 className="border p-2 rounded-full"
                                 value={password}
-                                type="text"
+                                type="password"
                                 onChange={(e) => setPassword(e.currentTarget.value)}/>
                             <button type="button" onClick={verify}
                                     className="cursor-pointer mt-4 w-full text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-4 py-3">Cerca
