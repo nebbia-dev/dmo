@@ -6,17 +6,22 @@ import Event from "@/app/_components/Event";
 import LocalMap from "@/app/_components/LocalMap";
 import {PDF} from "@/app/_components/_icons/PDF";
 import Markdown from "react-markdown";
+import Image from "next/image";
 
 export default async function Cycling() {
 
-    let content;
+    let content, contentTours;
 
     try {
         let data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/cicloturismo'+
-                '?populate[0]=elements',
+                '?populate[0]=elements'+
+                '&populate[1]=elements.immagine',
             { next: { revalidate: 1000 }});
         content = await data.json();
-        console.log(content.data)
+
+        let dataTours = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/cycling-tours',
+            { next: { revalidate: 1000 }});
+        contentTours = await dataTours.json();
     } catch(error) {
         console.log(error);
     }
@@ -61,7 +66,8 @@ export default async function Cycling() {
                                 src="https://www.youtube.com/embed/5PFbSF4gw4U?si=uky2Nd3dY5FiZFNj"
                                 title="YouTube video player" frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
+                        </iframe>
                     </div>
                 </div>
             </section>
@@ -71,15 +77,28 @@ export default async function Cycling() {
                         frameBorder="0" scrolling="no"></iframe>
 
                 <div className="flex gap-4 w-full mt-4">
-                    <iframe
-                        src="https://www.komoot.com/it-it/tour/2528924920/embed?share_token=aL3hwjQZ7SWuXvhhPDsuoctfuqkPCY9Fck1XJU7ueC06f8GkX2"
-                        width="33%" height="200" frameBorder="0" scrolling="no"></iframe>
-                    <iframe
-                        src="https://www.komoot.com/it-it/tour/2528926095/embed?share_token=aDqugpwDksE7ArubbtiTKRrNbU27V7fe1U4si0q2NJByr7it08"
-                        width="33%" height="200" frameBorder="0" scrolling="no"></iframe>
-                    <iframe
-                        src="https://www.komoot.com/it-it/tour/2528927055/embed?share_token=ahYAYfXQmZLbk1dAe3H5aO3xnEIW4cqnIt7psTgFxjVZ2Tm4yK"
-                        width="33%" height="200" frameBorder="0" scrolling="no"></iframe>
+
+                    {contentTours.data.map((el:any) => {
+                        if(el.ordine > 3) return;
+                        else {
+                            return (
+                                <div className="w-1/3 bg-white" key={el.id}>
+                                    <iframe
+                                        src={el.link}
+                                        width="100%" height="200" frameBorder="0" scrolling="no"></iframe>
+                                    <div className="w-full text-right py-3 px-4">
+                                        <Link
+                                            className="text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-3 py-2 text-sm"
+                                            href={`/discover/cycling/${el.documentId}`}
+                                        >
+                                            Guarda l'itinerario
+                                        </Link>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    })}
+
                 </div>
 
                 <div className="mt-5 flex gap-4 w-full">
@@ -123,32 +142,40 @@ export default async function Cycling() {
             <section className="w-full bg-corpo-blue text-white">
                 <div className="flex flex-col w-[90vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-20 pb-20 md:pb-24">
                     <h2 className="font-bold text-3xl mb-8">Servizi utili al tuo itinerario in bici</h2>
+                    <div className="flex flex-col md:flex-row gap-4">
+                        <div className="w-full md:w-2/4">
+                            <Image
+                                className="rounded-xl w-full h-full object-cover"
+                                src={process.env.NEXT_PUBLIC_BASE_URL + content.data.elements.immagine.url}
+                                alt={content.data.elements.immagine.alternativeText} width={200} height={600}/>
+                        </div>
+                        <div className="w-full md:w-2/4">
+                            <div className="rounded-xl border border-white p-4 w-fit mb-6">
+                                <p><span
+                                    className="font-semibold block pb-2">Vendita, noleggio e riparazione di biciclette</span>
 
-                    <div className="rounded-xl border border-white p-4 w-fit mb-6">
-                        <p><span
-                            className="font-semibold block pb-2">Vendita, noleggio e riparazione di biciclette</span>
+                                    Se non hai la bici con te, la trovi qui. Puoi scegliere un modello tradizionale o a pedalata
+                                    assistita e partire subito. Ti basta decidere da dove iniziare: argini del Po e dell’Adda,
+                                    strade tra le cascine, borghi fortificati o città d’arte. Pedali, ti fermi quando vuoi, e
+                                    lungo la strada incontri sapori e botteghe del territorio.
+                                    Qui trovi anche l’elenco delle ciclofficine dove poter riparare il tuo mezzo a due ruote.
+                                    Vedi l’elenco completo dei servizi per ciclismo e cicloturismo in provincia di Cremona:
 
-                            Se non hai la bici con te, la trovi qui. Puoi scegliere un modello tradizionale o a pedalata
-                            assistita e partire subito. Ti basta decidere da dove iniziare: argini del Po e dell’Adda,
-                            strade tra le cascine, borghi fortificati o città d’arte. Pedali, ti fermi quando vuoi, e
-                            lungo la strada incontri sapori e botteghe del territorio.
-                            Qui trovi anche l’elenco delle ciclofficine dove poter riparare il tuo mezzo a due ruote.
-                            Vedi l’elenco completo dei servizi per ciclismo e cicloturismo in provincia di Cremona:
+                                    <Link href="/discover/cycling/rent"
+                                          className="block font-bold text-corpo-orange underline pt-4">Clicca qui &gt;</Link>
+                                </p>
+                            </div>
 
-                            <Link href="/discover/cycling/rent"
-                                  className="block font-bold text-corpo-orange underline pt-4">Clicca qui &gt;</Link>
-                        </p>
+                            <div className="rounded-xl border border-white p-4 w-fit">
+                                <p><span className="font-semibold block pb-2">Ricettività per il cicloturismo</span>
+                                    Queste strutture offrono ai clienti uno spazio sicuro per le biciclette, attrezzi per la manutenzione di base e un’attenzione particolare per chi va sulle due ruote.
+                                    Scopri la lista delle strutture bike-friendly presenti sul territorio:
+                                    <Link href="/discover/cycling/bike-friendly"
+                                          className="block font-bold text-corpo-orange underline pt-4">Clicca qui &gt;</Link>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="rounded-xl border border-white p-4 w-fit mb-6">
-                        <p><span className="font-semibold block pb-2">Ricettività per il cicloturismo</span>
-                            Queste strutture offrono ai clienti uno spazio sicuro per le biciclette, attrezzi per la manutenzione di base e un’attenzione particolare per chi va sulle due ruote.
-                            Scopri la lista delle strutture bike-friendly presenti sul territorio:
-                            <Link href="/discover/cycling/bike-friendly"
-                                  className="block font-bold text-corpo-orange underline pt-4">Clicca qui &gt;</Link>
-                        </p>
-                    </div>
-
                 </div>
             </section>
 

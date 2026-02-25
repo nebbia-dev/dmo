@@ -4,6 +4,15 @@ import {useState} from "react";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import {Close} from "@/app/_components/_icons/Close";
+import LocalMap from "@/app/_components/LocalMap";
+import {ComposerLocation} from "@/app/_types/types";
+
+type Composer = {
+    [key:string]: ComposerLocation[],
+    'Claudio Monteverdi' : ComposerLocation[],
+    'Amilcare Ponchielli' : ComposerLocation[],
+    'Antonio Stradivari' : ComposerLocation[],
+}
 
 export default function Composers({info}: {info:any}) {
     const [showModal, setShowModal] = useState({
@@ -14,6 +23,46 @@ export default function Composers({info}: {info:any}) {
     function showModalBio(n:number) {
         setShowModal({show: (n !== 0), text: n})
     }
+
+    const composers:Composer = {
+        'Claudio Monteverdi': [
+            {
+                name: 'Teatro Amilcare Ponchielli',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis sodales lectus at ultricies. Ut quis tellus at nunc dapibus venenatis. Nam ut blandit ex. Nunc ultrices cursus neque, at pellentesque est imperdiet a. Sed at porttitor massa. Maecenas tristique vestibulum sapien, at feugiat arcu tincidunt eget.',
+                lat: 45.13261494172049,
+                long: 10.019000483555224
+            }
+        ],
+        'Amilcare Ponchielli': [
+            {
+                name: 'Casa Museo Paderno Ponchielli',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis sodales lectus at ultricies. Ut quis tellus at nunc dapibus venenatis. Nam ut blandit ex. Nunc ultrices cursus neque, at pellentesque est imperdiet a. Sed at porttitor massa. Maecenas tristique vestibulum sapien, at feugiat arcu tincidunt eget.',
+                lat: 45.23906740340918,
+                long: 9.928271781708482
+            },
+            {
+                name: 'Chiesa di San Dalmazio',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis sodales lectus at ultricies. Ut quis tellus at nunc dapibus venenatis. Nam ut blandit ex. Nunc ultrices cursus neque, at pellentesque est imperdiet a. Sed at porttitor massa. Maecenas tristique vestibulum sapien, at feugiat arcu tincidunt eget.',
+                lat: 45.23951930172695,
+                long: 9.926311212396033
+            }
+        ],
+        'Antonio Stradivari': [
+            {
+                name: 'Museo del Violino e Auditorium Giovanni Arvedi',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis sodales lectus at ultricies. Ut quis tellus at nunc dapibus venenatis. Nam ut blandit ex. Nunc ultrices cursus neque, at pellentesque est imperdiet a. Sed at porttitor massa. Maecenas tristique vestibulum sapien, at feugiat arcu tincidunt eget.',
+                lat: 45.13164839881695,
+                long: 10.02311602403172
+            },
+            {
+                name: 'Casa Stradivari',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis sodales lectus at ultricies. Ut quis tellus at nunc dapibus venenatis. Nam ut blandit ex. Nunc ultrices cursus neque, at pellentesque est imperdiet a. Sed at porttitor massa. Maecenas tristique vestibulum sapien, at feugiat arcu tincidunt eget.',
+                lat: 45.137579671586984,
+                long: 10.019065724031977
+            }
+        ]
+    }
+
 
     return (
         <>
@@ -83,8 +132,8 @@ export default function Composers({info}: {info:any}) {
                 showModal.show &&
                 <div className="top-0 left-0 fixed z-20 w-screen h-screen bg-gray-500/25">
                         <div className="pt-8 pb-12 pl-8 pr-2 shadow-md relative top-50 left-[50%] translate-x-[-50%] bg-corpo-blue text-white rounded-xl w-2/4">
-                            <div className="max-h-[516px] overflow-y-auto pr-6">
-                                <div className="w-full flex justify-end">
+                            <div className="max-h-[516px] overflow-y-auto pr-6 relative">
+                                <div className="w-full flex justify-end fixed right-8 bg-corpo-blue pb-2">
                                     <Close onClick={() => showModalBio(0)} className="cursor-pointer"/>
                                 </div>
                                 <div className="markdown">
@@ -92,6 +141,7 @@ export default function Composers({info}: {info:any}) {
                                         {info['compositore_' + showModal.text][0]['bio']}
                                     </Markdown>
                                 </div>
+                                <LocalMap homepage={false} fullPage={true} composers={composers[info['compositore_' + showModal.text][0]['nome']]} />
                             </div>
                         </div>
                 </div>

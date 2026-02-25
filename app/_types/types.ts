@@ -9,3 +9,11 @@ export interface Experience {
     "tags": string[],
     "coordinate": number[]
 }
+
+export type ComposerLocation = {
+    [key:string]: string|number,
+    name: string,
+    description: string,
+    lat: number,
+    long: number
+}

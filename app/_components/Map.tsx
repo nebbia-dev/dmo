@@ -7,9 +7,11 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import data from "@/utils/experiences.json"
 import Link from "next/link";
 import {useState} from "react";
+import {ComposerLocation} from "@/app/_types/types";
 
-export default function Map({homepage, autoFilter, fullPage} : {homepage:boolean, autoFilter?:undefined|number, fullPage?:undefined|boolean}) {
+export default function Map({homepage, autoFilter, fullPage, composers} : {homepage:boolean, autoFilter?:undefined|number, fullPage?:undefined|boolean, composers?:undefined|ComposerLocation[]}) {
     const [filter, setFilter] = useState<string>('all');
+
     return (
         <section id="map">
             {homepage && <div className="flex items-center gap-4 px-4 mb-4">
@@ -40,7 +42,9 @@ export default function Map({homepage, autoFilter, fullPage} : {homepage:boolean
                     </li>
                 </ul>
             </div>}
-            <MapContainer className={`${homepage || fullPage ? 'h-[600px]' : 'h-[532px] w-[866px]'} rounded-xl z-100`} center={[45.136887, 10.028458]} zoom={10}
+            <MapContainer className={`${homepage || fullPage ? 'h-[600px]' : 'h-[532px] w-[866px]'} rounded-xl z-100`}
+                          center={(composers && composers[0].name.includes('Paderno')) ? [45.23906740340918, 9.928271781708482] : [45.136887, 10.028458]}
+                          zoom={composers ? 14 : 10}
                           scrollWheelZoom={false}>
                 <TileLayer
                     attribution="Google Maps"
@@ -86,6 +90,19 @@ export default function Map({homepage, autoFilter, fullPage} : {homepage:boolean
                                         }</p>
                                         <Link href='/' className="text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full py-2 px-3">Scopri</Link>
                                     </div>
+                                </div>
+                            </Popup>
+                        </Marker>
+                    )
+                })}
+
+                {composers && composers.map(el => {
+                    return(
+                        <Marker key={el.lat + ', ' + el.long} position={[el.lat, el.long]}>
+                            <Popup className="border border-orange-500 rounded-xl">
+                                <div className="px-4 pt-4 pb-2">
+                                    <h4 className="font-bold">{el.name}</h4>
+                                    <p>{el.description}</p>
                                 </div>
                             </Popup>
                         </Marker>

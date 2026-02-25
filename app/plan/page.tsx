@@ -2,6 +2,11 @@ import InfoCard from "@/app/_components/InfoCard";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import Routes from "@/app/_components/Routes";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Image from "next/image";
+import {Plus} from "@/app/_components/_icons/Plus";
 
 export default async function Plan() {
 
@@ -21,45 +26,120 @@ export default async function Plan() {
 
     return(
         <>
-            <Routes/>
+            <div className="w-[90vw] md:w-[80vw] mx-auto mt-[79px] px-4 md:px-0 pt-[69px] mb-12 fadein-slower">
+                <h1 className="font-bold text-4xl mt-8">Pianifica il tuo viaggio</h1>
+            </div>
 
+            {/*auto*/}
             <section
-                className="w-[90vw] md:w-[80vw] mx-auto px-4 md:px-0 pt-12 pb-20 fadein-slower">
-                <h2 className="font-bold text-2xl mb-8">Con l'aereo</h2>
-                <div className="markdown">
-                    <Markdown>
-                        {content.data.aereo}
-                    </Markdown>
-                </div>
-            </section>
-
-            <section
-                className="w-[90vw] md:w-[80vw] mx-auto px-4 md:px-0 pt-8 pb-20 fadein-slower">
-                <h2 className="font-bold text-2xl mb-8">Con l'autobus</h2>
-                <div className="markdown">
-                    <Markdown>
-                        {content.data.bus}
-                    </Markdown>
-                </div>
-            </section>
-
-            <section
-                className="w-[90vw] md:w-[80vw] mx-auto px-4 md:px-0 pt-8 pb-20 fadein-slower">
-                <h2 className="font-bold text-2xl mb-8">Elenco infopoint</h2>
-                <div className="flex gap-4 flex-wrap w-full">
-                    {contentInfo.data.map((el:any) => {
-                        return(
-                            <InfoCard
-                                key={el.nome}
-                                name={el.nome}
-                                address={el.indirizzo}
-                                phone={el.telefono}
-                                email={el.email}
-                                url={el.link}
-                            />
-                        )
-                    })}
-                </div>
+                className="w-[90vw] md:w-[80vw] mx-auto px-4 md:px-0 flex flex-col fadein-slower mb-20">
+                <Accordion sx={{backgroundColor: 'transparent', boxShadow: 'none', borderBottom: '1px solid #000'}}>
+                    <AccordionSummary
+                        expandIcon={<Plus/>}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                    >
+                        <div className="flex gap-4 items-center my-4">
+                            <div className="w-12">
+                                <Image
+                                    src='/icons/car.png' alt="icona automobile" width={64} height={64}
+                                    className="w-full"
+                                />
+                            </div>
+                            <h2 className="font-bold text-2xl">In auto</h2>
+                        </div>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Routes/>
+                        <div className="w-full text-right mt-8 mb-4">
+                            <a href="https://www.google.com/maps/dir//Cremona,+26100+CR/@45.6574975,9.9627623,7z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x4780fe6d3c71fe83:0x307737e7e74bdaf5!2m2!1d10.0227044!2d45.1333135?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D"
+                               className="cursor-pointer mt-4 w-full text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-4 py-3"
+                               target="_blank"
+                            >Ottieni indicazioni &gt;</a>
+                        </div>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion sx={{backgroundColor: 'transparent', boxShadow: 'none', borderBottom: '1px solid #000'}}>
+                    <AccordionSummary
+                        expandIcon={<Plus/>}
+                        aria-controls="panel2-content"
+                        id="panel2-header"
+                    >
+                        <div className="flex gap-4 items-center my-4">
+                            <div className="w-12">
+                                <Image
+                                    src='/icons/plane.png' alt="icona aereo" width={64} height={64}
+                                    className="w-full"
+                                />
+                            </div>
+                            <h2 className="font-bold text-2xl">Con l'aereo</h2>
+                        </div>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <div className="markdown">
+                            <Markdown>
+                                {content.data.aereo}
+                            </Markdown>
+                        </div>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion sx={{backgroundColor: 'transparent', boxShadow: 'none', borderBottom: '1px solid #000'}}>
+                    <AccordionSummary
+                        expandIcon={<Plus/>}
+                        aria-controls="panel3-content"
+                        id="panel3-header"
+                    >
+                        <div className="flex gap-4 items-center my-4">
+                            <div className="w-12">
+                                <Image
+                                    src='/icons/bus.png' alt="icona bus" width={64} height={64}
+                                    className="w-full"
+                                />
+                            </div>
+                            <h2 className="font-bold text-2xl">Con l'autobus</h2>
+                        </div>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <div className="markdown">
+                            <Markdown>
+                                {content.data.bus}
+                            </Markdown>
+                        </div>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion sx={{backgroundColor: 'transparent', boxShadow: 'none'}}>
+                    <AccordionSummary
+                        expandIcon={<Plus/>}
+                        aria-controls="panel4-content"
+                        id="panel4-header"
+                    >
+                        <div className="flex gap-4 items-center my-4">
+                            <div className="w-12">
+                                <Image
+                                    src='/icons/info.png' alt="icona info" width={64} height={64}
+                                    className="w-full"
+                                />
+                            </div>
+                            <h2 className="font-bold text-2xl">Infopoint</h2>
+                        </div>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <div className="flex gap-4 flex-wrap w-full">
+                            {contentInfo.data.map((el: any) => {
+                                return (
+                                    <InfoCard
+                                        key={el.nome}
+                                        name={el.nome}
+                                        address={el.indirizzo}
+                                        phone={el.telefono}
+                                        email={el.email}
+                                        url={el.link}
+                                    />
+                                )
+                            })}
+                        </div>
+                    </AccordionDetails>
+                </Accordion>
             </section>
 
             <section className="w-full bg-alt-blue text-white">
