@@ -29,8 +29,8 @@ export default function Menu({links} : {links:any}) {
 
     return(
         <>
-            <header className="w-full fixed bg-corpo-blue z-110 top-0 h-[79px]">
-                <div className="w-[90%] h-full mx-auto p-0.5 text-white flex items-center justify-between">
+            <header className="w-full fixed bg-corpo-blue z-110 top-0 h-[79px] z-100">
+                <div className="w-full px-2 md:px-0 md:w-[90%] md:mx-auto h-full p-0.5 text-white flex items-center justify-between">
                     <Link
                         href="/"
                         onNavigate={() => toggleMenu('close')}
@@ -44,15 +44,15 @@ export default function Menu({links} : {links:any}) {
                         />
                     </Link>
                     <div className="flex gap-4 items-center">
-                        <Link href='/experiences' className="text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-4 py-3">Esperienze</Link>
-                        <Link href='/experiences' className="text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-5 py-3">Eventi</Link>
+                        <Link href='/experiences' className="hidden md:block text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-4 py-3">Esperienze</Link>
+                        <Link href='/experiences' className="hidden md:block text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-5 py-3">Eventi</Link>
                         {/*<div className="flex relative items-center">*/}
                         {/*    <Search className="text-gray-600 absolute left-[16px] w-5 h-5"/>*/}
                         {/*    <input type="text" placeholder="Cerca eventi o esperienze" className="w-[272px] py-3 pr-8 pl-12 rounded-full bg-white text-black"/>*/}
                         {/*</div>*/}
-                        <Cart className="cursor-pointer w-8 h-8"/>
+                        <Cart className="hidden md:block cursor-pointer w-8 h-8"/>
                         <Hamburger className="w-8 h-8 cursor-pointer" onClick={() => toggleMenu('open')}/>
-                        <Image src="/images/it.png" className="cursor-pointer rounded-full w-6 h-6" alt="italian flag" width={64} height={64}/>
+                        <Image src="/images/it.png" className="hidden md:block cursor-pointer rounded-full w-6 h-6" alt="italian flag" width={64} height={64}/>
                     </div>
                 </div>
             </header>
@@ -63,7 +63,7 @@ export default function Menu({links} : {links:any}) {
 
             <div
                 className={`${showMenu === 'open' ? 'appear' : showMenu === 'close' ? 'disappear' : 'w-0'} max-w-[350px] h-screen fixed bg-white z-200 right-0 top-0`}>
-                <div className="w-full px-8 pb-8 pt-4 flex items-center justify-between">
+                <div className="w-full px-8 pb-2 md:pb-8 pt-4 flex items-center justify-between">
                     <Image
                         src='/logo-only-icon.png'
                         alt="visit-cremona-logo"
@@ -73,7 +73,13 @@ export default function Menu({links} : {links:any}) {
                     />
                     <Close className="w-8 h-8 cursor-pointer" onClick={() => toggleMenu('close')}/>
                 </div>
-                <nav className="border-t border-black/50 w-[90%] mx-auto text-black/50 pt-3 overflow-y-auto h-[calc(100vh-148px)]">
+
+                <div className="md:hidden block flex w-full items-center justify-end px-8 pb-4 gap-4">
+                    <Cart className="cursor-pointer w-8 h-8"/>
+                    <Image src="/images/it.png" className="cursor-pointer rounded-full w-6 h-6" alt="italian flag" width={64} height={64}/>
+                </div>
+
+                <nav className="border-t border-black/50 w-[90%] mx-auto text-black/50 pt-3 overflow-y-auto h-[calc(100vh-212px)] md:h-[calc(100vh-148px)]">
                     <ul className="pl-2">
                         <li className="py-3">
                             <Link

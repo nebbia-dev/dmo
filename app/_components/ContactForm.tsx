@@ -92,13 +92,13 @@ export default function ContactForm({newsletter, partner} : {newsletter:boolean,
                                         className={`cursor-pointer w-[164px] ${!newsletter ? "p-4" : "text-sm px-4 py-2 w-fit mt-2"} text-black transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full`}>{!newsletter ? 'Invia' : 'Iscriviti'} &gt;</button>
                             </div>
                     </Form>
-                : <Form action={send} className={`mt-8 flex flex-col gap-4 ${!newsletter ? '' : 'w-[55vw]'}`}>
+                : <Form action={send} className={`mt-8 flex flex-col gap-4 ${!newsletter ? '' : 'w-full md:w-[55vw]'}`}>
                         <div className={`flex gap-4 ${!newsletter ? 'flex-col' : 'flex-row'}`}>
-                            <label className={`text-black ${!newsletter ? '' : 'w-[50%]'}`}>
+                            <label className={`text-black ${!newsletter ? '' : 'w-full md:w-[50%]'}`}>
                             <input required name="name" className="bg-white shadow-sm w-full rounded-xl py-2 px-3" type="text"
                                        placeholder="Nome"/>
                             </label>
-                            <label className={`text-black ${!newsletter ? '' : 'w-[50%]'}`}>
+                            <label className={`text-black ${!newsletter ? '' : 'w-full md:w-[50%]'}`}>
                                 <input required name="lastname" className="bg-white shadow-sm w-full rounded-xl py-2 px-3" type="text"
                                        placeholder="Cognome"/>
                             </label>

@@ -39,13 +39,13 @@ export default function Stories({gallery, description} : {description: string, g
     }
 
     return (
-        <div className="w-[90%] ml-[12.5%] mt-4 flex gap-4">
-            <div className="w-[25%] h-auto">
+        <div className="w-full md:pl-[12.5%] mt-4 flex gap-4">
+            <div className="hidden md:block w-[25%] h-auto">
                 <img id="col-img-now" className="rounded-xl w-full h-full object-cover"
                      src={process.env.NEXT_PUBLIC_BASE_URL + images[0].url} alt={images[0].alt}/>
             </div>
-            <div className="w-[75%] flex flex-col items-end bg-[#f0f8ff] relative z-10">
-                <div className="flex gap-2">
+            <div className="w-full md:w-[calc(75%-40px)] flex flex-col items-end bg-[#f0f8ff] relative z-10">
+                <div className="hidden md:flex gap-2">
                     <img id="first-img" className="rounded-xl w-[30%] h-[400px] object-cover"
                          src={process.env.NEXT_PUBLIC_BASE_URL + images[1].url} alt={images[1].alt}/>
                     <img id="second-img" className="rounded-xl w-[30%] h-[400px] object-cover"
@@ -56,28 +56,34 @@ export default function Stories({gallery, description} : {description: string, g
                          src={process.env.NEXT_PUBLIC_BASE_URL + images[4].url} alt={images[4].alt}/>
                 </div>
                 <div
-                    className="w-[95%] pt-12 pb-8 pl-4 pr-[calc(20%+(0.25rem*8))] flex items-center gap-12 bg-[#f0f8ff] relative z-10">
+                    className="mx-auto md:mx-0 w-[95%] pt-4 md:pt-12 pb-8 pl-4 pr-4 md:pr-[calc(20%+(0.25rem*8))] flex items-center gap-12 bg-[#f0f8ff] relative z-10">
+
                     <button type="button"
-                    disabled={disabled} onClick={() => slide('prev')} className="cursor-pointer p-3 flex items-center justify-center w-12 h-12 border-1 border-orange-800 text-orange-800 rounded-xl font-bold text-2xl">
+                            disabled={disabled} onClick={() => slide('prev')}
+                            className="cursor-pointer p-3 hidden md:flex items-center justify-center w-12 h-12 border-1 border-orange-800 text-orange-800 rounded-xl font-bold text-2xl">
                         &lt;
-                </button>
-                <div>
-                    <h2 className="font-bold text-3xl">Le storie del territorio</h2>
-                    <p className="mt-4">
-                        {description}
-                    </p>
-                    <div className="w-full text-right mt-8">
-                        <Link href="/stories" className="font-bold underline relative">
-                            <AnimatedHoverButton content="Vai alle Storie del Territorio"/>
-                        </Link>
+                    </button>
+                    <div>
+                        <h2 className="font-bold text-3xl">Le storie del territorio</h2>
+                        <p className="mt-4">
+                            {description}
+                        </p>
+                        <div className="w-full text-right mt-8">
+                            <Link href="/stories" className="font-bold underline relative">
+                                <AnimatedHoverButton content="Vai alle Storie del Territorio"/>
+                            </Link>
+                        </div>
                     </div>
-                </div>
                     <button type="button" disabled={disabled} onClick={() => slide('next')}
-                            className="cursor-pointer p-3 flex items-center justify-center w-12 h-12 border-1 border-orange-800 text-orange-800 rounded-xl font-bold text-2xl">
-                    &gt;
-            </button>
+                            className="cursor-pointer p-3 hidden md:flex items-center justify-center w-12 h-12 border-1 border-orange-800 text-orange-800 rounded-xl font-bold text-2xl">
+                        &gt;
+                    </button>
+                </div>
+                <div className="md:hidden block w-[90%] mx-auto h-[400px]">
+                    <img id="col-img-now" className="rounded-xl w-full h-full object-cover"
+                         src={process.env.NEXT_PUBLIC_BASE_URL + images[1].url} alt={images[1].alt}/>
+                </div>
+            </div>
         </div>
-</div>
-</div>
-)
+    )
 }

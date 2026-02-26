@@ -14,8 +14,8 @@ export default function Map({homepage, autoFilter, fullPage, composers} : {homep
 
     return (
         <section id="map">
-            {homepage && <div className="flex items-center gap-4 px-4 mb-4">
-                <ul className="text-sm flex gap-4">
+            {homepage && <div className="flex items-center gap-4 px-1 md:px-4 mb-4">
+                <ul className="text-sm flex gap-4 flex-wrap md:justify-start justify-center">
                     <li>
                         <button type="button"
                                 className="flex items-center border bg-gray-500 border-gray-500 text-white rounded-full px-4 py-2">
@@ -42,7 +42,7 @@ export default function Map({homepage, autoFilter, fullPage, composers} : {homep
                     </li>
                 </ul>
             </div>}
-            <MapContainer className={`${homepage || fullPage ? 'h-[600px]' : 'h-[532px] w-[866px]'} rounded-xl z-100`}
+            <MapContainer className={`${homepage || fullPage ? 'h-[600px]' : 'h-[532px] md:w-[866px]'} w-full rounded-xl z-100`}
                           center={(composers && composers[0].name.includes('Paderno')) ? [45.23906740340918, 9.928271781708482] : [45.136887, 10.028458]}
                           zoom={composers ? 14 : 10}
                           scrollWheelZoom={false}>

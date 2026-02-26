@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Event({what, when, where, how, img} : {what:string, when:string, where:string, how:string, img:string}){
     return (
-        <div className="w-full rounded-xl border-1 flex p-4 gap-8 h-[558px]">
-            <Image src={img} alt="copertina esperienza" width={400} height={400} className="rounded-xl w-[40%] h-[524px] object-cover"/>
+        <div className="w-full rounded-xl border-1 flex md:flex-row flex-col p-4 gap-8 overflow-y-auto md:overflow-y-none h-screen md:h-[558px]">
+            <Image src={img} alt="copertina esperienza" width={400} height={400} className="rounded-xl w-full md:w-[40%] h-[524px] object-cover"/>
             <div>
                 <div className="p-4 h-[456px]">
                     <h5 className="mb-2 font-semibold text-2xl">{what}</h5>

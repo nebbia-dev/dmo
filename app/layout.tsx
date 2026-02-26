@@ -47,6 +47,7 @@ export default async function RootLayout({
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
                 integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
                 crossOrigin=""></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
     </head>
     <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

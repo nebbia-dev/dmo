@@ -47,7 +47,7 @@ export default async function Home() {
           </section>
 
           <section
-              className="flex flex-col md:flex-row gap-12 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-20 pb-24">
+              className="flex flex-col md:flex-row gap-12 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-20 pb-24">
               <div className="flex flex-col gap-2 md:w-2/4 w-full">
                   <h2 className="font-bold text-4xl mt-8">{content.data['sub_hero_titolo']}</h2>
                   <h3 className="text-3xl pl-1">{content.data['sub_hero_sottotitolo']}</h3>
@@ -68,12 +68,12 @@ export default async function Home() {
               </div>
           </section>
           {/*default: pt-20*/}
-          <section className="w-[90vw] md:w-[80vw] mx-auto px-4 md:px-8 pb-24">
+          <section className="w-[95vw] md:w-[80vw] mx-auto px-4 md:px-8 pb-24">
               <h2 className="font-bold text-4xl mt-8 mb-12">Scopri cosa offre il territorio vicino a te</h2>
               <LocalMap homepage={true} autoFilter={0}/>
           </section>
 
-          <section className="flex flex-col gap-8 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24">
+          <section className="flex flex-col gap-8 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24">
               <div className="flex flex-col min-[1200px]:flex-row items-center relative">
                   <div className="w-full min-[1200px]:w-2/4 relative z-5">
                       <h2 className="font-bold text-4xl mt-8">{content.data['visit_cards_titolo']}</h2>
@@ -115,13 +115,13 @@ export default async function Home() {
 
           <section className="w-full bg-pastel-yellow">
               <div
-                  className="flex flex-col gap-16 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
-                  <div className="flex justify-between">
-                      <h2 className="font-bold text-4xl w-full text-center md:text-left break-title">{content.data['esperienze_classiche'][0]['nome']}</h2>
-                      <p className="max-w-[40vw]">{content.data['esperienze_classiche'][0]['descrizione']}</p>
+                  className="flex flex-col gap-16 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
+                  <div className="flex flex-col md:flex-row justify-between">
+                      <h2 className="font-bold text-4xl w-full text-left break-title mb-8 md:mb-0">{content.data['esperienze_classiche'][0]['nome']}</h2>
+                      <p className="w-full md:max-w-[40vw]">{content.data['esperienze_classiche'][0]['descrizione']}</p>
                   </div>
 
-                  <div className="flex gap-4 justify-end">
+                  <div className="flex gap-4 md:justify-end flex-wrap">
                       {
                           arrData.filter(el => el.tipo === 'CL').map((el, i) => {
                               if (i < 3) {
@@ -142,13 +142,13 @@ export default async function Home() {
           </section>
           <section className="w-full bg-pastel-orange">
               <div
-                  className="flex flex-col gap-16 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
-                  <div className="flex justify-between">
-                      <h2 className="font-bold text-4xl w-full text-center md:text-left break-title">{content.data['esperienze_contemporanee'][0]['nome']}</h2>
-                      <p className="max-w-[40vw]">{content.data['esperienze_contemporanee'][0]['descrizione']}</p>
+                  className="flex flex-col gap-16 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
+                  <div className="flex flex-col md:flex-row justify-between">
+                      <h2 className="font-bold text-4xl w-full text-left break-title mb-8 md:mb-0">{content.data['esperienze_contemporanee'][0]['nome']}</h2>
+                      <p className="w-full md:max-w-[40vw]">{content.data['esperienze_contemporanee'][0]['descrizione']}</p>
                   </div>
 
-                  <div className="flex gap-4 justify-end">
+                  <div className="flex gap-4 md:justify-end flex-wrap">
                       {
                           arrData.filter(el => el.tipo === 'CO').map((el, i) => {
                               if (i < 3) {
@@ -169,10 +169,10 @@ export default async function Home() {
           </section>
           <section className="w-full bg-pastel-pink">
               <div
-                  className="flex flex-col gap-16 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
-                  <div className="flex justify-between">
-                      <h2 className="font-bold text-4xl w-full text-center md:text-left break-title">{content.data['esperienze_uniche'][0]['nome']}</h2>
-                      <p className="max-w-[40vw]">{content.data['esperienze_uniche'][0]['descrizione']}
+                  className="flex flex-col gap-16 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
+                  <div className="flex flex-col md:flex-row justify-between">
+                      <h2 className="font-bold text-4xl w-full text-left break-title mb-8 md:mb-0">{content.data['esperienze_uniche'][0]['nome']}</h2>
+                      <p className="w-full md:max-w-[40vw]">{content.data['esperienze_uniche'][0]['descrizione']}
                       </p>
                   </div>
 
@@ -199,8 +199,8 @@ export default async function Home() {
 
           <section className="w-full">
               <div
-                  className="flex flex-col gap-16 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
-                  <h2 className="font-bold text-4xl w-full text-center md:text-left break-title">Eventi</h2>
+                  className="flex flex-col gap-16 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pb-24 pt-20">
+                  <h2 className="font-bold text-4xl w-full text-left break-title">Eventi</h2>
 
                   <Event
                       what={arrData[0].titolo}
@@ -223,8 +223,8 @@ export default async function Home() {
           </section>
 
           <section className="w-full bg-pastel-yellow">
-              <div className="flex w-[90vw] md:w-[80vw] mx-auto justify-between px-4 md:px-8 pt-20">
-                  <div className="w-2/4 flex flex-col gap-8 justify-center">
+              <div className="flex w-[95vw] md:w-[80vw] mx-auto justify-between px-4 md:px-8 pt-20">
+                  <div className="w-full md:w-2/4 flex flex-col gap-8 items-center text-center md:text-left justify-center">
                       <h2 className="font-bold text-3xl">
                           {content.data['social_titolo']}
                       </h2>
@@ -251,12 +251,12 @@ export default async function Home() {
                           }
                       </div>
                   </div>
-                  <img className="w-1/3" src={process.env.NEXT_PUBLIC_BASE_URL + content.data['social_immagine'].url} alt={content.data['social_immagine'].alternativeText}/>
+                  <img className="hidden md:block w-1/3" src={process.env.NEXT_PUBLIC_BASE_URL + content.data['social_immagine'].url} alt={content.data['social_immagine'].alternativeText}/>
               </div>
           </section>
 
           <section className="w-full bg-alt-blue text-white">
-              <div className="flex flex-col w-[90vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-20 pb-20 md:pb-24">
+              <div className="flex flex-col w-[95vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-20 pb-20 md:pb-24">
                   <h2 className="font-bold text-3xl mb-4">Resta in contatto con noi</h2>
                   <h4 className="font-bold">Iscriviti alla newsletter<br/>
                       Ricevi consigli, eventi e novità via email</h4>
