@@ -68,8 +68,8 @@ export default function Composers({info}: {info:any}) {
         <>
             <div
                 className="mb-4">
-                <ul className="flex items-center gap-[2%]">
-                    <li className="h-[500px] w-[32%] relative">
+                <ul className="flex flex-col md:flex-row items-center gap-4 md:gap-[2%]">
+                    <li className="h-[500px] w-full md:w-[32%] relative">
                         <Image width={300} height={300}
                                src={process.env.NEXT_PUBLIC_BASE_URL + info['compositore_1'][0].immagine.url}
                                alt={info['compositore_1'][0].immagine.alternativeText}
@@ -88,7 +88,7 @@ export default function Composers({info}: {info:any}) {
                         </div>
                     </li>
 
-                    <li className="h-[500px] w-[32%] relative">
+                    <li className="h-[500px] w-full md:w-[32%] relative">
                         <Image width={300} height={300}
                                src={process.env.NEXT_PUBLIC_BASE_URL + info['compositore_2'][0].immagine.url}
                                alt={info['compositore_2'][0].immagine.alternativeText}
@@ -107,7 +107,7 @@ export default function Composers({info}: {info:any}) {
                         </div>
                     </li>
 
-                    <li className="h-[500px] w-[32%] relative">
+                    <li className="h-[500px] w-full md:w-[32%] relative">
                         <Image width={300} height={300}
                                src={process.env.NEXT_PUBLIC_BASE_URL + info['compositore_3'][0].immagine.url}
                                alt={info['compositore_3'][0].immagine.alternativeText}
@@ -131,7 +131,7 @@ export default function Composers({info}: {info:any}) {
             {
                 showModal.show &&
                 <div className="top-0 left-0 fixed z-20 w-screen h-screen bg-gray-500/25">
-                        <div className="pt-8 pb-12 pl-8 pr-2 shadow-md relative top-50 left-[50%] translate-x-[-50%] bg-corpo-blue text-white rounded-xl w-2/4">
+                        <div className="pt-8 pb-12 pl-8 pr-2 shadow-md relative top-50 left-[50%] translate-x-[-50%] bg-corpo-blue text-white rounded-xl w-[95%] md:w-2/4">
                             <div className="max-h-[516px] overflow-y-auto pr-6 relative">
                                 <div className="w-full flex justify-end fixed right-8 bg-corpo-blue pb-2">
                                     <Close onClick={() => showModalBio(0)} className="cursor-pointer"/>

@@ -27,7 +27,7 @@ export default function Newsreel({content}:{content:any}) {
 
     return (
         <div className="flex flex-col gap-4">
-            <div className="flex gap-4">
+            <div className="flex flex-col md:flex-row gap-4">
 
                 {
                     content.map((el:any, i:number) => {
@@ -40,7 +40,7 @@ export default function Newsreel({content}:{content:any}) {
                 }
 
             </div>
-            <div className="w-full flex items-center justify-end gap-8">
+            <div className="w-full flex items-center justify-center md:justify-end gap-8">
 
                 <button type="button" onClick={() => changePage('prev')}
                         className="z-10 pb-0.5 cursor-pointer text-black bg-white rounded-full w-8 h-8 border-1 border-black"

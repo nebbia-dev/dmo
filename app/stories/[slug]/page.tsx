@@ -21,18 +21,18 @@ export default async function Story({params}: { params: Promise<{ slug: string }
     return(
         <>
         <section className="mt-[79px] fadein-slower">
-            <div className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-20 pb-24">
+            <div className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-20 pb-24">
                 <p className="text-sm mb-10"><span
                     className="font-semibold">Home / Stories /</span> {content.data.titolo}
                 </p>
 
-                <div className="flex gap-16">
-                    <div className="w-[40%] h-[600px]">
+                <div className="flex flex-col md:flex-row gap-16">
+                    <div className="w-full md:w-[40%] h-[600px]">
                         <Image src={process.env.NEXT_PUBLIC_BASE_URL + content.data.immagine.url} alt={content.data.immagine.alternativeText} width={200} height={600}
                         className="w-full h-full object-cover rounded-xl"
                         />
                     </div>
-                    <div className="w-[60%] markdown">
+                    <div className="w-full md:w-[60%] markdown">
                         <h2 className="font-bold text-2xl mb-8">{content.data.titolo}</h2>
                         <Markdown>
                             {content.data.contenuto}
@@ -41,7 +41,7 @@ export default async function Story({params}: { params: Promise<{ slug: string }
                 </div>
             </div>
         </section>
-            <section className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-8 pb-24">
+            <section className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-2 md:pt-8 pb-24">
                 <h2 className="font-bold text-4xl mb-8">Esperienze correlate</h2>
                 <div className="flex gap-4 flex-wrap">
                     {

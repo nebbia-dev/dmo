@@ -15,10 +15,10 @@ export default async function Links() {
 
     return (
         <section
-            className="w-[90vw] md:w-[80vw] mx-auto mt-[79px] px-4 md:px-0 pt-[69px] mb-[80px] flex flex-col md:flex-row gap-16 fadein-slower">
+            className="w-[95vw] md:w-[80vw] mx-auto mt-[79px] px-4 md:px-0 pt-[69px] mb-[80px] flex flex-col md:flex-row gap-16 fadein-slower">
             <div className="flex flex-col w-full">
                 <h1 className="font-bold text-4xl mt-8 mb-16">Link utili</h1>
-                <div className="flex gap-4 flex-wrap">
+                <div className="flex flex-col md:flex-row gap-4 flex-wrap">
                     {content.data.map((el:any) => {
                         return(
                             <LinkCard

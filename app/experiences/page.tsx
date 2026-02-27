@@ -53,17 +53,17 @@ export default function Experiences() {
         <>
             <section className="mt-[79px] fadein-slower">
                 <div
-                    className="flex gap-20 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-20 pb-24">
-                    <div className="flex flex-col gap-2 w-[40%]">
+                    className="flex flex-col md:flex-row gap-20 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-20 pb-24">
+                    <div className="flex flex-col gap-2 w-full md:w-[40%]">
                         <p className="text-sm"><span className="font-semibold">Home /</span> Esperienze</p>
                         <h2 className="font-bold text-4xl my-8">Esperienze</h2>
 
                         <Filter exp={true} search={applyFilters}/>
 
                     </div>
-                    <div className="flex flex-wrap gap-4 w-[60%]">
+                    <div className="flex flex-wrap gap-4 w-full md:w-[60%]">
                         {
-                            displayedExp.map((el, i) => {
+                            displayedExp.map((el) => {
                                 return (
                                     <SingleExperienceCard key={el.titolo} el={el} grid={false} altGrid={true}/>
                                 )

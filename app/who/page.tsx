@@ -48,7 +48,7 @@ export default async function Who() {
           </div>
 
           <section
-              className="flex flex-col md:flex-row gap-20 w-[90vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-20 pb-24">
+              className="flex flex-col md:flex-row gap-20 w-[95vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-20 pb-24">
               <div className="flex flex-col gap-2 w-full">
                   <h2 className="font-bold text-4xl my-8">News</h2>
 
@@ -58,7 +58,7 @@ export default async function Who() {
           </section>
 
           <section
-              className="flex flex-col md:flex-row gap-20 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-20 pb-24">
+              className="flex flex-col md:flex-row gap-20 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-20 pb-24">
               <div className="flex flex-col gap-2 w-full md:w-2/4">
                   <h2 className="font-bold text-4xl mt-8">{content.data['sub_hero_titolo']}</h2>
                   <p className="w-full mt-2 pl-1 whitespace-pre-line">{content.data['sub_hero_descrizione']}</p>
@@ -105,7 +105,7 @@ export default async function Who() {
               </div>
           </section>
 
-          <section className="w-[90vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-8 pb-24 text-center">
+          <section className="w-[95vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-8 pb-24 text-center">
               <h2 className="font-bold text-4xl mt-8">{content.data['team_titolo']}</h2>
 
               <div className="flex gap-12 justify-center mt-16 flex-wrap">

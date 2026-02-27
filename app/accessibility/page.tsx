@@ -13,7 +13,7 @@ export default async function Who() {
 
     return (
         <>
-            <section className="w-[80vw] mx-auto mt-[79px] pt-[69px] mb-[80px] fadein-slower">
+            <section className="w-[95vw] md:w-[80vw] mx-auto mt-[79px] px-4 md:px-8 pt-[69px] mb-[80px] fadein-slower">
                 <h2 className="font-bold text-4xl">{content.data.titolo}</h2>
                 <div className="w-full mt-8 pl-1 markdown">
                     <Markdown>

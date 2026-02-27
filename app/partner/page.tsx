@@ -58,9 +58,9 @@ export default async function Who() {
   return (
       <>
           <section
-              className="w-[90vw] md:w-[80vw] mx-auto text-center md:text-left mt-[79px] pt-[69px] mb-[80px] min-h-[65vh] fadein-slower">
+              className="w-[95vw] md:w-[80vw] mx-auto text-left mt-[79px] px-4 md:px-8 pt-[69px] mb-[80px] min-h-[65vh] fadein-slower">
               <h2 className="font-bold text-4xl">{content.data['partners_titolo']}</h2>
-              <div className="grid justify-items-center grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-8">
+              <div className="grid justify-items-center grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-8">
                   {partnersInfo &&
                       partnersInfo.map((el: any) => {
                           if (!el[0]) {
@@ -100,7 +100,7 @@ export default async function Who() {
               </div>
 
               <h2 className="font-bold text-4xl mt-16">{content.data['diventa_partner_titolo']}</h2>
-              <p className="w-full pl-1 columns-2 mt-8 whitespace-pre-line">
+              <p className="w-full pl-1 md:columns-2 mt-8 whitespace-pre-line">
                   The standard Lorem Ipsum passage, used since the 1500s
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                   et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -121,9 +121,9 @@ export default async function Who() {
               <ContactForm newsletter={false} partner={true}/>
 
               <h2 className="font-bold text-4xl mt-20 mb-8">Scaricabili</h2>
-              <div className="flex gap-4 w-full">
+              <div className="flex flex-col md:flex-row gap-4 w-full">
                   <div
-                      className="p-8 w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
+                      className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
                       <p className="font-bold">Lorem ipsum dolor sit amet</p>
                       <div className="flex gap-4 items-center mt-2">
                           <PDF className="cursor-pointer w-12 h-12"/>
@@ -134,7 +134,7 @@ export default async function Who() {
                   </div>
 
                   <div
-                      className="p-8 w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
+                      className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
                       <p className="font-bold">Lorem ipsum dolor sit amet</p>
                       <div className="flex gap-4 items-center mt-2">
                           <PDF className="cursor-pointer w-12 h-12"/>
@@ -145,7 +145,7 @@ export default async function Who() {
                   </div>
 
                   <div
-                      className="p-8 w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
+                      className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
                       <p className="font-bold">Lorem ipsum dolor sit amet</p>
                       <div className="flex gap-4 items-center mt-2">
                           <PDF className="cursor-pointer w-12 h-12"/>

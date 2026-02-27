@@ -12,9 +12,9 @@ export default function Operators() {
     }
 
     return (
-           <div className="w-[90vw] md:w-[80vw] h-[65vh] mx-auto mt-[79px] px-4 md:px-0 pt-[69px] mb-[80px] flex flex-col md:flex-row gap-16 fadein-slower">
+           <div className="w-[95vw] md:w-[80vw] h-[65vh] mx-auto mt-[79px] px-4 md:px-0 pt-[69px] mb-[80px] flex flex-col md:flex-row gap-16 fadein-slower">
                     <div className="w-full h-full flex items-center justify-center">
-                        <div className="p-8 flex flex-col items-center bg-white rounded-xl">
+                        <div className="w-full md:w-auto p-8 flex flex-col items-center bg-white rounded-xl">
                             <h2 className="font-bold text-2xl mb-4">Area operatori</h2>
                             <input
                                 placeholder="Password"

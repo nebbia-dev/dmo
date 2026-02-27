@@ -18,7 +18,7 @@ export default async function Story({params}: { params: Promise<{ id: string }> 
     return (
         <>
             <section className="mt-[79px] fadein-slower">
-                <div className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-20 pb-24">
+                <div className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-20 pb-24">
                     <p className="text-sm mb-20"><span className="font-semibold">Home / Scopri il territorio / </span>Cicloturismo
                     </p>
 
@@ -35,30 +35,30 @@ export default async function Story({params}: { params: Promise<{ id: string }> 
 
             {(content.data.distanza && content.data.difficolta && content.data.durata && content.data.dislivello_positivo && content.data.dislivello_negativo)
                 &&
-                <section className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-16 pb-24">
+                <section className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-4 md:pt-16 pb-24">
                     <h2 className="font-bold text-4xl mb-8">Caratteristiche del percorso</h2>
-                    <div className="flex gap-4">
-                        <div className="rounded-xl bg-[#918FC7] text-white p-4 w-1/5 h-[150px] relative">
+                    <div className="flex flex-col md:flex-row gap-4">
+                        <div className="rounded-xl bg-[#918FC7] text-white p-4 w-full md:w-1/5 h-[150px] relative">
                             <h3 className="font-semibold text-lg">Durata</h3>
                             <p className="text-3xl w-full text-right absolute bottom-4 right-4">{content.data.durata}</p>
                         </div>
 
-                        <div className="rounded-xl bg-[#918FC7] text-white p-4 w-1/5 h-[150px] relative">
+                        <div className="rounded-xl bg-[#918FC7] text-white p-4 w-full md:w-1/5 h-[150px] relative">
                             <h3 className="font-semibold text-lg">Distanza</h3>
                             <p className="text-3xl w-full text-right absolute bottom-4 right-4">{content.data.distanza} km</p>
                         </div>
 
-                        <div className="rounded-xl bg-[#918FC7] text-white p-4 w-1/5 h-[150px] relative">
+                        <div className="rounded-xl bg-[#918FC7] text-white p-4 w-full md:w-1/5 h-[150px] relative">
                             <h3 className="font-semibold text-lg">Dislivello positivo</h3>
                             <p className="text-3xl w-full text-right absolute bottom-4 right-4">{content.data.dislivello_positivo} m</p>
                         </div>
 
-                        <div className="rounded-xl bg-[#918FC7] text-white p-4 w-1/5 h-[150px] relative">
+                        <div className="rounded-xl bg-[#918FC7] text-white p-4 w-full md:w-1/5 h-[150px] relative">
                             <h3 className="font-semibold text-lg">Dislivello negativo</h3>
                             <p className="text-3xl w-full text-right absolute bottom-4 right-4">{content.data.dislivello_negativo} m</p>
                         </div>
 
-                        <div className="rounded-xl bg-[#918FC7] text-white p-4 w-1/5 h-[150px] relative">
+                        <div className="rounded-xl bg-[#918FC7] text-white p-4 w-full md:w-1/5 h-[150px] relative">
                             <h3 className="font-semibold text-lg">Difficoltà</h3>
                             <p className="text-3xl w-full text-right absolute bottom-4 right-4">{content.data.difficolta}</p>
                         </div>
@@ -67,13 +67,13 @@ export default async function Story({params}: { params: Promise<{ id: string }> 
             }
 
             {content.data.related.length > 0 &&
-                <section className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-16 pb-24">
+                <section className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-4 md:pt-16 pb-24">
                     <h2 className="font-bold text-4xl mb-8">Itinerari correlati</h2>
-                    <div className="flex gap-4 w-full mt-4">
+                    <div className="flex flex-col md:flex-row gap-4 w-full mt-4">
 
                         {content.data.related.map((el: any) => {
                                 return (
-                                    <div className="w-1/3 bg-white" key={el.id}>
+                                    <div className="w-full md:w-1/3 bg-white" key={el.id}>
                                         <iframe
                                             src={el.link}
                                             width="100%" height="200" frameBorder="0" scrolling="no"></iframe>

@@ -1,6 +1,6 @@
 export default function LinkCard({title, url, description, download} : {title:string, url:string, description:string, download:boolean}) {
     return(
-        <div className="w-[calc(50%-8px)] bg-white rounded-xl p-8 text-sm">
+        <div className="w-full md:w-[calc(50%-8px)] bg-white rounded-xl p-8 text-sm">
             <h3 className="font-bold text-2xl">{title}</h3>
             <p className="py-4">{description}</p>
             <div className="w-ful text-right mt-4">

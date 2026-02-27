@@ -1,6 +1,6 @@
 export default function InfoCard({name, address, phone, email, children, url} : {name:string, address:string, phone:string, email:string, children?:undefined|React.ReactNode, url:string}) {
     return(
-        <div className={`w-[calc(33%-8px)] bg-white rounded-xl p-8 ${children ? 'h-[65vh]' : 'h-[364px]'} relative`}>
+        <div className={`w-full md:w-[calc(33%-8px)] bg-white rounded-xl p-8 ${children ? 'h-[65vh]' : 'h-[364px]'} relative`}>
             <h4 className="font-bold text-2xl h-[64px] line-clamp-2">{name}</h4>
             <div className={`${children ? 'h-[70%] overflow-y-auto mt-4' : ''}`}>
                 {children}

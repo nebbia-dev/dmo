@@ -26,13 +26,13 @@ export default async function Plan() {
 
     return(
         <>
-            <div className="w-[90vw] md:w-[80vw] mx-auto mt-[79px] px-4 md:px-0 pt-[69px] mb-12 fadein-slower">
+            <div className="w-[95vw] md:w-[80vw] mx-auto mt-[79px] px-4 md:px-0 pt-[69px] mb-12 fadein-slower">
                 <h1 className="font-bold text-4xl mt-8">Pianifica il tuo viaggio</h1>
             </div>
 
             {/*auto*/}
             <section
-                className="w-[90vw] md:w-[80vw] mx-auto px-4 md:px-0 flex flex-col fadein-slower mb-20">
+                className="w-[95vw] md:w-[80vw] mx-auto px-4 md:px-0 flex flex-col fadein-slower mb-20">
                 <Accordion sx={{backgroundColor: 'transparent', boxShadow: 'none', borderBottom: '1px solid #000'}}>
                     <AccordionSummary
                         expandIcon={<Plus/>}
@@ -143,7 +143,7 @@ export default async function Plan() {
             </section>
 
             <section className="w-full bg-alt-blue text-white">
-                <div className="flex flex-col w-[90vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-20 pb-20 md:pb-24">
+                <div className="flex flex-col w-[95vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-20 pb-20 md:pb-24">
                     <h2 className="font-bold text-3xl mb-8">Dove dormire</h2>
 
                     <div className="rounded-xl border border-white p-4 w-fit">

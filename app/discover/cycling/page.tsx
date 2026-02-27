@@ -29,7 +29,7 @@ export default async function Cycling() {
     return (
         <>
             <section className="mt-[79px] fadein-slower">
-                <div className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-20 pb-24">
+                <div className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-20 pb-12 md:pb-24">
                     <p className="text-sm mb-20"><span className="font-semibold">Home / Scopri il territorio / </span>Cicloturismo
                     </p>
                     <div
@@ -48,7 +48,7 @@ export default async function Cycling() {
                 </div>
 
                 <div
-                    className="flex flex-col md:flex-row gap-20 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-12 pb-4">
+                    className="flex flex-col md:flex-row gap-20 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 md:pt-12 pb-4">
                     <div className="flex flex-col gap-2 w-full md:w-2/4">
                         <h2 className="font-bold text-4xl mt-8">
                             {content.data.elements.titolo}
@@ -60,7 +60,7 @@ export default async function Cycling() {
                         </div>
                     </div>
 
-                    <div className="w-full h-[500px] md:w-2/4 md:h-auto relative">
+                    <div className="w-full h-[300px] md:w-2/4 md:h-auto relative">
                         <iframe width="100%" height="315"
                                 className="rounded-xl absolute bottom-0"
                                 src="https://www.youtube.com/embed/5PFbSF4gw4U?si=uky2Nd3dY5FiZFNj"
@@ -72,17 +72,17 @@ export default async function Cycling() {
                 </div>
             </section>
 
-            <section className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-8 pb-24">
+            <section className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-8 pb-24">
                 <iframe src="https://www.komoot.com/it-it/collection/3284381/embed" width="100%" height="700"
                         frameBorder="0" scrolling="no"></iframe>
 
-                <div className="flex gap-4 w-full mt-4">
+                <div className="flex md:flex-row flex-col gap-4 w-full mt-4">
 
                     {contentTours.data.map((el:any) => {
                         if(el.ordine > 3) return;
                         else {
                             return (
-                                <div className="w-1/3 bg-white" key={el.id}>
+                                <div className="w-full md:w-1/3 bg-white" key={el.id}>
                                     <iframe
                                         src={el.link}
                                         width="100%" height="200" frameBorder="0" scrolling="no"></iframe>
@@ -101,9 +101,9 @@ export default async function Cycling() {
 
                 </div>
 
-                <div className="mt-5 flex gap-4 w-full">
+                <div className="mt-5 flex md:flex-row flex-col gap-4 w-full">
                     <div
-                        className="p-8 w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
+                        className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
                         <p className="font-bold">Mappa cicloturistica del territorio cremonese</p>
                         <div className="flex gap-4 items-center mt-2">
                             <PDF className="cursor-pointer w-12 h-12"/>
@@ -114,7 +114,7 @@ export default async function Cycling() {
                     </div>
 
                     <div
-                        className="p-8 w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
+                        className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
                         <p className="font-bold">Piste ciclabili di Cremona e dintorni (FIAB Cremona)</p>
                         <div className="flex gap-4 items-center mt-2">
                             <PDF className="cursor-pointer w-12 h-12"/>
@@ -126,7 +126,7 @@ export default async function Cycling() {
                 </div>
             </section>
 
-            <section className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pb-24">
+            <section className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pb-24">
                 <h2 className="font-bold text-4xl mt-8 mb-16">Tutte le esperienze</h2>
                 <div className="flex gap-4 flex-wrap">
                     {
@@ -140,7 +140,7 @@ export default async function Cycling() {
             </section>
 
             <section className="w-full bg-corpo-blue text-white">
-                <div className="flex flex-col w-[90vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-20 pb-20 md:pb-24">
+                <div className="flex flex-col w-[95vw] md:w-[80vw] mx-auto px-4 md:px-8 pt-20 pb-20 md:pb-24">
                     <h2 className="font-bold text-3xl mb-8">Servizi utili al tuo itinerario in bici</h2>
                     <div className="flex flex-col md:flex-row gap-4">
                         <div className="w-full md:w-2/4">
@@ -179,7 +179,7 @@ export default async function Cycling() {
                 </div>
             </section>
 
-            <section className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-16 pb-24">
+            <section className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-16 pb-24">
                 <h2 className="font-bold text-4xl mt-8 mb-16">Tutti gli eventi</h2>
                 <div className="flex gap-4 flex-wrap">
                     {
@@ -199,8 +199,8 @@ export default async function Cycling() {
                 </div>
             </section>
 
-            <section className="items-center justify-center">
-                <h2 className="w-[90vw] md:w-[80vw] mx-auto px-4 md:px-8 font-bold text-4xl mt-8 mb-16">Visualizza tutti gli Eventi e le Esperienze sulla mappa</h2>
+            <section className="w-[95vw] md:w-screen md:mb-0 mb-8 md:px-0 px-4 mx-auto items-center justify-center">
+                <h2 className="md:w-[80vw] mx-auto px-4 md:px-8 font-bold text-4xl mt-8 mb-16">Visualizza tutti gli Eventi e le Esperienze sulla mappa</h2>
                 <LocalMap homepage={false} autoFilter={1} fullPage={true}/>
             </section>
 

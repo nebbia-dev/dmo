@@ -1,5 +1,3 @@
-import {sendMail} from "@/utils/nodemailer/sendMail";
-import Form from "next/form";
 import ContactForm from "@/app/_components/ContactForm";
 
 export default async function Contacts() {
@@ -15,7 +13,7 @@ export default async function Contacts() {
 
     return (
         <>
-            <section className="w-[90vw] md:w-[80vw] mx-auto mt-[79px] px-4 md:px-0 pt-[69px] mb-[80px] flex flex-col md:flex-row gap-16 fadein-slower">
+            <section className="w-[95vw] md:w-[80vw] mx-auto mt-[79px] px-4 md:px-0 pt-[69px] mb-[80px] flex flex-col md:flex-row gap-16 fadein-slower">
                 <div className="w-full md:w-2/4">
                     <h2 className="font-bold text-4xl">Contatti</h2>
                     <p className="w-full mt-8 pl-1">Email: <a className="underline" href={`mailto:${content.data.email}`}>{content.data.email}</a></p>

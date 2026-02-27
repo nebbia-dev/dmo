@@ -42,16 +42,16 @@ export default function ContemporaryExperiences() {
         <>
             <section className="mt-[79px] fadein-slower">
                 <div
-                    className="flex flex-col gap-20 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-20 pb-24">
+                    className="flex flex-col gap-12 md:gap-20 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-20 pb-24">
                     <div className="flex flex-col gap-4 w-full">
-                        <p className="text-sm w-2/4"><span className="font-semibold">Home / Esperienze /</span> Contemporanee</p>
+                        <p className="text-sm"><span className="font-semibold">Home / Esperienze /</span> Contemporanee</p>
 
-                        <div className="flex gap-20 my-8">
-                            <div className="w-[40%]">
+                        <div className="flex flex-col md:flex-row gap-12 md:gap-20 my-8">
+                            <div className="w-full md:w-[40%]">
                                 <h2 className="font-bold text-4xl break-title">Esperienze Contemporanee</h2>
                             </div>
 
-                            <div className="w-[60%] pl-2">
+                            <div className="w-full md:w-[60%] pl-2">
                                 <p><span className="font-semibold block pb-2">Proposte tematiche</span>
                                     Scopri Cremona e il suo territorio attraverso esperienze curiose e particolari.
                                     Scegli tra degustazioni, visite tematiche, itinerari in bici o in barca, incontri con artigiani e luoghi meno noti.
@@ -64,11 +64,11 @@ export default function ContemporaryExperiences() {
                     </div>
 
 
-                    <div className="flex gap-20 w-full">
+                    <div className="flex flex-col md:flex-row gap-20 w-full">
                         <Filter exp={false} search={applyFilters}/>
-                        <div className="flex flex-wrap gap-4 w-[60%]">
+                        <div className="flex flex-wrap gap-4 w-full md:w-[60%]">
                             {
-                                displayedExp.map((el, i) => {
+                                displayedExp.map((el) => {
                                     return (
                                         <SingleExperienceCard key={el.titolo} el={el} grid={false} altGrid={true}/>
                                     )

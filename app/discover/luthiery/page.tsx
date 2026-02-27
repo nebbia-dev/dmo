@@ -30,7 +30,7 @@ export default async function Cycling() {
     return (
         <>
             <section className="mt-[79px] fadein-slower">
-                <div className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-20 pb-24">
+                <div className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-20 pb-12 md:pb-24">
                     <p className="text-sm mb-20"><span className="font-semibold">Home / Scopri il territorio / </span>Musica e liuteria
                     </p>
                     <div
@@ -49,7 +49,7 @@ export default async function Cycling() {
                 </div>
 
                 <div
-                    className="flex flex-col md:flex-row gap-20 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-12 pb-4">
+                    className="flex flex-col md:flex-row gap-20 w-[90vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 md:pt-12 pb-4">
                     <div className="flex flex-col gap-2 w-full md:w-2/4">
                         <h2 className="font-bold text-4xl mt-8">
                             {content.data.elements.titolo}
@@ -61,7 +61,7 @@ export default async function Cycling() {
                         </div>
                     </div>
 
-                    <div className="w-full h-[500px] md:w-2/4 md:h-auto relative">
+                    <div className="w-full h-[300px] md:w-2/4 md:h-auto relative">
                         <iframe width="100%" height="315"
                                 className="rounded-xl absolute bottom-0"
                                 src="https://www.youtube.com/embed/qZa1JT7oI2c?si=Xs8Yhbtzh8izTk8v"
@@ -72,14 +72,14 @@ export default async function Cycling() {
                 </div>
             </section>
 
-            <section className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-8 pb-24">
+            <section className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pt-8 pb-24">
                 <h3 className="font-bold text-3xl my-8">Scopri il territorio  attraverso i principali personaggi della storia della musica</h3>
 
                 <Composers info={content.data}/>
 
-                <div className="mt-5 flex gap-4 w-full">
+                <div className="mt-5 flex flex-col md:flex-row gap-4 w-full">
                     <div
-                        className="p-8 w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
+                        className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
                         <p className="font-bold">Scopri tutti gli eventi e i festival mese per mese: </p>
                         <div className="flex gap-4 items-center mt-2">
                             <PDF className="cursor-pointer w-12 h-12"/>
@@ -90,7 +90,7 @@ export default async function Cycling() {
                     </div>
 
                     <div
-                        className="p-8 w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
+                        className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
                         <p className="font-bold">Scarica la mappa turistico - musicale del territorio cremonese</p>
                         <div className="flex gap-4 items-center mt-2">
                             <PDF className="cursor-pointer w-12 h-12"/>
@@ -102,7 +102,7 @@ export default async function Cycling() {
                 </div>
             </section>
 
-            <section className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pb-24">
+            <section className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pb-24">
                 <h2 className="font-bold text-4xl mt-8 mb-16">Tutte le esperienze</h2>
                 <div className="flex gap-4 flex-wrap">
                     {
@@ -115,7 +115,7 @@ export default async function Cycling() {
                 </div>
             </section>
 
-            <section className="w-[90vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pb-24">
+            <section className="w-[95vw] md:w-[80vw] mx-auto items-center justify-center px-4 md:px-8 pb-24">
                 <h2 className="font-bold text-4xl mt-8 mb-16">Tutti gli eventi</h2>
                 <div className="flex gap-4 flex-wrap">
                     {
@@ -135,8 +135,9 @@ export default async function Cycling() {
                 </div>
             </section>
 
-            <section className="items-center justify-center">
-                <h2 className="w-[90vw] md:w-[80vw] mx-auto px-4 md:px-8 font-bold text-4xl mt-8 mb-16">Visualizza tutti gli Eventi e le Esperienze sulla mappa</h2>
+            <section className="w-[95vw] md:w-screen md:mb-0 mb-8 md:px-0 px-4 mx-auto items-center justify-center">
+                <h2 className="md:w-[80vw] mx-auto px-4 md:px-8 font-bold text-4xl mt-8 mb-16">Visualizza tutti gli
+                    Eventi e le Esperienze sulla mappa</h2>
                 <LocalMap homepage={false} autoFilter={2} fullPage={true}/>
             </section>
 
