@@ -19,8 +19,6 @@ export default function Stories({gallery, description} : {description: string, g
             alt: gallery[2].alternativeText},
         {url: gallery[3].url,
             alt: gallery[3].alternativeText},
-        {url: gallery[4].url,
-            alt: gallery[4].alternativeText},
     ]);
     function slide(step:'prev'|'next') {
         setDisabled(true);
@@ -44,16 +42,14 @@ export default function Stories({gallery, description} : {description: string, g
                 <img id="col-img-now" className="rounded-xl w-full h-full object-cover"
                      src={process.env.NEXT_PUBLIC_BASE_URL + images[0].url} alt={images[0].alt}/>
             </div>
-            <div className="w-full md:w-[calc(75%-40px)] flex flex-col items-end bg-[#f0f8ff] relative z-10">
+            <div className="w-full md:w-[calc(75%-32px)] flex flex-col items-end bg-[#f0f8ff] relative z-10">
                 <div className="hidden md:flex gap-2">
-                    <img id="first-img" className="rounded-xl w-[30%] h-[400px] object-cover"
+                    <img id="first-img" className="rounded-xl w-[45%] h-[400px] object-cover"
                          src={process.env.NEXT_PUBLIC_BASE_URL + images[1].url} alt={images[1].alt}/>
-                    <img id="second-img" className="rounded-xl w-[30%] h-[400px] object-cover"
+                    <img id="second-img" className="rounded-xl w-[45%] h-[400px] object-cover"
                          src={process.env.NEXT_PUBLIC_BASE_URL + images[2].url} alt={images[2].alt}/>
-                    <img id="third-img" className="rounded-xl w-[30%] h-[400px] object-cover"
+                    <img id="third-img" className="rounded-l-xl w-[10%] h-[400px] object-cover"
                          src={process.env.NEXT_PUBLIC_BASE_URL + images[3].url} alt={images[3].alt}/>
-                    <img id="fourth-img" className="rounded-l-xl w-[10%] h-[400px] object-cover"
-                         src={process.env.NEXT_PUBLIC_BASE_URL + images[4].url} alt={images[4].alt}/>
                 </div>
                 <div
                     className="mx-auto md:mx-0 w-[95%] pt-4 md:pt-12 pb-8 pl-4 pr-4 md:pr-[calc(20%+(0.25rem*8))] flex items-center gap-12 bg-[#f0f8ff] relative z-10">

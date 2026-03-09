@@ -80,24 +80,26 @@ export default async function Cycling() {
                 <div className="mt-5 flex flex-col md:flex-row gap-4 w-full">
                     <div
                         className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
-                        <p className="font-bold">Scopri tutti gli eventi e i festival mese per mese: </p>
-                        <div className="flex gap-4 items-center mt-2">
+                        <p className="font-bold">Scopri tutti gli eventi e i festival mese per mese qui</p>
+                        <a href="/Mappa Musica versione definitiva.pdf" download
+                           className="flex gap-4 items-center mt-2">
                             <PDF className="cursor-pointer w-12 h-12"/>
                             <p className="text-sm w-[75%]">
-                                Scaricali da qui.
+                                Scaricali qui.
                             </p>
-                        </div>
+                        </a>
                     </div>
 
                     <div
                         className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
                         <p className="font-bold">Scarica la mappa turistico - musicale del territorio cremonese</p>
-                        <div className="flex gap-4 items-center mt-2">
+                        <a href="/Mappa Musica versione definitiva.pdf" download
+                           className="flex gap-4 items-center mt-2">
                             <PDF className="cursor-pointer w-12 h-12"/>
                             <p className="text-sm w-[75%]">
-                               Consulta la mappa.
+                                Consulta la mappa.
                             </p>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </section>

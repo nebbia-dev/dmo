@@ -1,18 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function VisitCard({title, price, details} : {title:string|undefined, price:number|undefined, details:string[]|undefined}) {
     return(
-        <div className={`${title === 'Welcome' ? 'bg-pastel-blue border-blue-300' : 'bg-pastel-pink border-red-300'} rounded-xl w-full md:w-[40vw] flex flex-col border p-8 min-h-[40vh]`}>
+        <div className={`${title === 'Welcome' ? 'bg-pastel-blue border-blue-300' : 'bg-pastel-pink border-red-300'} rounded-xl w-full md:w-[40vw] flex flex-col border p-8 min-h-[40vh] relative`}>
             {
                 title && price && details &&
                 <>
-
-                        <h4 className="flex justify-between font-bold text-2xl mb-2">
-                            <span>{title}</span>
-                            <span>{price} €</span>
-                        </h4>
-
-                    <ul className="mt-4">
+                    <h4 className="flex justify-between font-bold text-2xl mb-2">
+                        <span>{title}</span>
+                        <span>{price} €</span>
+                    </h4>
+                    <ul className="mt-4 mb-8">
                         {
                             details.map((el, i) => {
                                 let image = '/globe.svg';
@@ -39,6 +38,11 @@ export default function VisitCard({title, price, details} : {title:string|undefi
                     </ul>
                 </>
             }
+            <div className="w-full text-end absolute bottom-8 right-8">
+                <Link href="/"
+                      className="text-black text-sm transition duration-500 hover:bg-corpo-orange bg-soft-orange rounded-full px-3 py-2">
+                    Acquista &gt;</Link>
+            </div>
         </div>
     )
 }

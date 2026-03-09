@@ -105,23 +105,37 @@ export default async function Cycling() {
                     <div
                         className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
                         <p className="font-bold">Mappa cicloturistica del territorio cremonese</p>
-                        <div className="flex gap-4 items-center mt-2">
+                        <a href="/Mappa cicloturismo Cremona_stampa luglio_2.pdf" download
+                           className="flex gap-4 items-center mt-2">
                             <PDF className="cursor-pointer w-12 h-12"/>
                             <p className="text-sm w-[75%]">
                                 Scaricala qui.
                             </p>
-                        </div>
+                        </a>
                     </div>
 
                     <div
                         className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
                         <p className="font-bold">Piste ciclabili di Cremona e dintorni (FIAB Cremona)</p>
-                        <div className="flex gap-4 items-center mt-2">
+                        <a href="/Mappa cicloturismo Cremona_stampa luglio_2.pdf" download
+                           className="flex gap-4 items-center mt-2">
                             <PDF className="cursor-pointer w-12 h-12"/>
                             <p className="text-sm w-[75%]">
                                 Consulta la mappa.
                             </p>
-                        </div>
+                        </a>
+                    </div>
+
+                    <div
+                        className="p-8 w-full md:w-[33%] min-h-[172px] rounded-xl bg-corpo-blue text-white flex flex-col gap-6">
+                        <p className="font-bold">Disciplinare del progetto Cicloturismo Visit Cremona 2026</p>
+                        <a href="/Disciplinare progetto cicloturismo Visit Cremona 2026.pdf" download
+                           className="flex gap-4 items-center mt-2">
+                            <PDF className="cursor-pointer w-12 h-12"/>
+                            <p className="text-sm w-[75%]">
+                                Scaricalo qui.
+                            </p>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -154,10 +168,7 @@ export default async function Cycling() {
                                 <p><span
                                     className="font-semibold block pb-2">Vendita, noleggio e riparazione di biciclette</span>
 
-                                    Se non hai la bici con te, la trovi qui. Puoi scegliere un modello tradizionale o a pedalata
-                                    assistita e partire subito. Ti basta decidere da dove iniziare: argini del Po e dell’Adda,
-                                    strade tra le cascine, borghi fortificati o città d’arte. Pedali, ti fermi quando vuoi, e
-                                    lungo la strada incontri sapori e botteghe del territorio.
+                                    Se non hai la bici con te, la trovi qui. Puoi scegliere un modello tradizionale o a pedalata assistita e partire subito.
                                     Qui trovi anche l’elenco delle ciclofficine dove poter riparare il tuo mezzo a due ruote.
                                     Vedi l’elenco completo dei servizi per ciclismo e cicloturismo in provincia di Cremona:
 

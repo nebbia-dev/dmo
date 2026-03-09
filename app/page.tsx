@@ -18,7 +18,7 @@ export default async function Home() {
     try {
         let data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/homepage' +
             '?populate[0]=hero_carosello' +
-            '&populate[1]=sub_hero_video' +
+            '&populate[1]=sub_hero_image' +
             '&populate[2]=card_1' +
             '&populate[3]=card_2' +
             '&populate[4]=visit_cards_immagine' +
@@ -47,7 +47,7 @@ export default async function Home() {
           </section>
 
           <section
-              className="flex flex-col md:flex-row gap-12 w-[95vw] md:w-[80vw] mx-auto justify-center px-4 md:px-8 pt-20 pb-24">
+              className="flex flex-col md:flex-row gap-12 w-[95vw] md:w-[80vw] mx-auto justify-center items-center px-4 md:px-8 pt-20 pb-24">
               <div className="flex flex-col gap-2 md:w-2/4 w-full">
                   <h2 className="font-bold text-4xl mt-8">{content.data['sub_hero_titolo']}</h2>
                   <h3 className="text-3xl pl-1">{content.data['sub_hero_sottotitolo']}</h3>
@@ -59,12 +59,18 @@ export default async function Home() {
                   </div>
               </div>
               <div className="w-full h-[400px] md:w-2/4 md:h-auto relative">
-                  <Image
-                      className="object-cover object-left rounded-xl"
-                      src={process.env.NEXT_PUBLIC_BASE_URL + content.data['sub_hero_video'].url}
-                      alt={content.data['sub_hero_video'].alternativeText}
-                      fill={true}
-                  />
+                  {content.data['sub_hero_image']
+                      ? <Image
+                          className="object-cover object-left rounded-xl"
+                          src={process.env.NEXT_PUBLIC_BASE_URL + content.data['sub_hero_image'].url}
+                          alt={content.data['sub_hero_video'].alternativeText}
+                          fill={true}
+                          />
+                      : content.data['sub_hero_video']
+                          ? <iframe className="rounded-xl" src={content.data['sub_hero_video']} width="100%" height="400"
+                                    frameBorder="0" scrolling="no"></iframe>
+                          : <></>
+                  }
               </div>
           </section>
           {/*default: pt-20*/}
@@ -224,7 +230,7 @@ export default async function Home() {
 
           <section className="w-full bg-pastel-yellow">
               <div className="flex w-[95vw] md:w-[80vw] mx-auto justify-between px-4 md:px-8 pt-20">
-                  <div className="w-full md:w-2/4 flex flex-col gap-8 items-center text-center md:text-left justify-center">
+                  <div className="w-full md:w-2/4 flex flex-col gap-8 items-center md:items-start text-center md:text-left justify-center">
                       <h2 className="font-bold text-3xl">
                           {content.data['social_titolo']}
                       </h2>

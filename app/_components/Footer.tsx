@@ -83,11 +83,13 @@ export default function Footer({links, contacts} : {links:any, contacts:any}) {
                         <li><a target="_blank" href={links['amministrazione_trasparente']}>Amministrazione
                             trasparente</a></li>
                         <li><Link href="/partner">Partner</Link></li>
+                        <li><a target="_blank" href={links['osservatorio_cremona']}>Osservatorio di Cremona</a></li>
                     </ul>
                     <ul className="flex flex-col gap-6 text-center lg:text-left">
                         <li><Link href="/who">Chi siamo</Link></li>
+                        <li><Link href="/plan">Pianifica il tuo viaggio</Link></li>
                         <li><Link href="/contact">Richiesta di informazioni</Link></li>
-                        <li><a target="_blank" href={links['osservatorio_cremona']}>Osservatorio di Cremona</a></li>
+                        <li><Link href="/newsletter">Iscrizione alla newsletter</Link></li>
                     </ul>
                 </div>
             </div>

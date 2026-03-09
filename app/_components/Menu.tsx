@@ -118,7 +118,7 @@ export default function Menu({links} : {links:any}) {
                             <button type="button" onClick={toggleExpMenu} className="cursor-pointer pr-4 py-3 flex justify-between items-center"><span>Esperienze</span>
                                 <span className={`${showExpMenu === 'open' ? 'rotate-90' : 'rotate-0'} transition-all duration-500 origin-center`}>&gt;</span>
                             </button>
-                                <ul className={`${showExpMenu === 'open' ? 'h-[192px]' : 'h-0'} pl-4 transition-all duration-500 overflow-hidden`}>
+                                <ul className={`${showExpMenu === 'open' ? 'max-h-[1000px]' : 'max-h-0'} pl-4 transition-all duration-500 overflow-hidden`}>
                                     <li className="py-3">
                                         <Link
                                             href="/experiences"

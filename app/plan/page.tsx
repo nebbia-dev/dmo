@@ -1,5 +1,4 @@
 import InfoCard from "@/app/_components/InfoCard";
-import Link from "next/link";
 import Markdown from "react-markdown";
 import Routes from "@/app/_components/Routes";
 import Accordion from '@mui/material/Accordion';
@@ -133,8 +132,9 @@ export default async function Plan() {
                                         address={el.indirizzo}
                                         phone={el.telefono}
                                         email={el.email}
-                                        url={el.link}
-                                    />
+                                        hours={el.orari}
+                                    >
+                                    </InfoCard>
                                 )
                             })}
                         </div>
@@ -148,7 +148,7 @@ export default async function Plan() {
 
                     <div className="rounded-xl border border-white p-4 w-fit">
                         <p>Guarda tutte le infrastrutture
-                            <Link href="/" className="font-bold text-corpo-orange underline ml-2">Clicca qui &gt;</Link>
+                            <a target="_blank" href="https://www.turismocremona.it/it/dove-dormire" className="font-bold text-corpo-orange underline ml-2">Clicca qui &gt;</a>
                         </p>
                     </div>
 
