@@ -4,6 +4,7 @@ import "./globals.css";
 import Menu from "@/app/_components/Menu";
 import Footer from "@/app/_components/Footer";
 import Iubenda from "@/app/_components/Iubenda";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,14 +41,30 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-    <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
-    <Menu links={content.data}/>
-    {children}
-    <Footer links={content.data} contacts={contactsContent.data}/>
-    <Iubenda/>
-    </body>
+        <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+            <Menu links={content.data}/>
+            {children}
+            <Footer links={content.data} contacts={contactsContent.data}/>
+            <Iubenda/>
+            <Script id="matomo">
+                {
+                    `
+                                var _paq = window._paq = window._paq || [];
+                                _paq.push(['trackPageView']);
+                                _paq.push(['enableLinkTracking']);
+                                (function() {
+                                    var u="https://ingestion.webanalytics.italia.it/";
+                                    _paq.push(['setTrackerUrl', u+'matomo.php']);
+                                    _paq.push(['setSiteId', '47316']);
+                                    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                                    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+                                })();
+                            `
+                }
+            </Script>
+        </body>
     </html>
   );
 }
