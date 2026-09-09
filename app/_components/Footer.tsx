@@ -1,31 +1,30 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Footer({links, contacts} : {links:any, contacts:any}) {
     return (
-        <footer className="min-h-[40vh] bg-corpo-blue w-full flex gap-4 py-16 text-white">
+        <footer id="footer" className="min-h-[40vh] bg-corpo-blue w-full flex gap-4 py-16 text-white">
             <div className="w-[80vw] flex flex-col lg:flex-row gap-20 items-center lg:items-start mx-auto">
                 <div className="w-[50vw] lg:w-[20vw] flex flex-col items-center justify-center gap-8">
-                    <Link href="/" className="w-[90%]">
-                        <Image
+                    <Link href='/' className="w-[90%]">
+                        <img
                             src='/logo.webp'
-                            alt="visit-cremona-logo"
+                            alt="Logo di Visit Cremona"
                             width={500}
                             height={500}
                         />
                     </Link>
                     <div className="flex gap-8 w-full items-center justify-center">
-                        <Image
+                        <img
                             src='/icons/InLombardia_white.png'
-                            alt="in lombardia logo"
+                            alt="Logo di InLombardia"
                             className="w-[80px]"
                             width={500}
                             height={500}
                         />
 
-                        <Image
+                        <img
                             src='/icons/E015-Logo_white.png'
-                            alt=" e015 logo"
+                            alt="Logo di E015"
                             className="w-[80px]"
                             width={500}
                             height={500}
@@ -33,44 +32,64 @@ export default function Footer({links, contacts} : {links:any, contacts:any}) {
                     </div>
                 </div>
                 <div className="w-full lg:w-[35vw] text-center lg:text-left">
-                    <p className="mb-8">Destination Management Organization di Cremona</p>
-                    <p className="mb-4">Contatti</p>
-                    <p><a className="hover:text-corpo-orange" href={`mailto:${contacts.email}`}>{contacts.email}</a></p>
-                    <p><a className="hover:text-corpo-orange" href={`tel:${contacts.telefono.split(' ').join('')}`}>{contacts.telefono}</a></p>
-                    <div className="mt-4 mb-2 flex gap-4">Seguici sui social:
-                            <ul className="flex gap-4 items-center">
-                                <li>
-                                    <a target="_blank" href={links.facebook}>
-                                        <Image src="/icons/hugeicons_facebook-02.webp" alt="facebook logo" width={24}
-                                               height={24}/>
+                    <p className="font-semibold mb-4">Contatti</p>
+                    <p>Sede: Piazza del Comune, 8 - 26100 CREMONA</p>
+                    <p><a className="hover:text-corpo-orange"
+                          href="tel:+390372407081">Tel.: + 39 0372 407081</a></p>
+                    <p>REA: TN-186218 | P.IVA 01902590221</p>
+                    <p>Cap. Soc. € 141.250,00</p>
+                    <p>PEC: protocollo@comunedicremona.legalmail.it</p>
+                    <div className="mt-3 mb-2 flex gap-4 justify-center lg:justify-start">
+                        Seguici sui social:
+                        <ul className="flex gap-4 items-center">
+                            <li>
+                                <a aria-label="Vai al profilo Facebook di Visit Cremona" target="_blank"
+                                   rel="noopener noreferrer" href='https://www.facebook.com/share/17DFpcJBEK/?mibextid=wwXIfr'>
+                                    <img aria-hidden={true} src="/icons/hugeicons_facebook-02.webp" alt="facebook logo"
+                                         width={24}
+                                         height={24}/>
+                                </a>
+                            </li>
+                            <li>
+                                <a aria-label="Vai al profilo Instagram di Visit Cremona" target="_blank"
+                                   rel="noopener noreferrer" href='https://www.instagram.com/visitcremona_official/'>
+                                    <img aria-hidden={true} src="/icons/logo-instagram.webp" alt="instagram logo"
+                                         width={24}
+                                         height={24}/>
+                                </a>
+                            </li>
+                            <li>
+                                <a aria-label="Vai al profilo Youtube di Visit Cremona" target="_blank"
+                                       rel="noopener noreferrer" href='https://www.youtube.com/@VisitCremonaofficial'>
+                                        <img aria-hidden={true} src="/icons/logo-youtube.svg" alt="instagram logo"
+                                             width={24}
+                                             height={24}/>
                                     </a>
                                 </li>
-                                <li>
-                                    <a target="_blank" href={links.instagram}>
-                                        <Image src="/icons/logo-instagram.webp" alt="instagram logo" width={24}
-                                               height={24}/>
-                                    </a>
-                                </li>
-                            </ul>
+                        </ul>
                     </div>
-                    <p className="mt-8">Coordinamento a cura di <a className="underline text-corpo-orange"
-                                                                   href="https://www.reindustria.com/" target="_blank">REI
-                        Reindustria</a>
-                    </p>
                 </div>
                 <div
                     className="w-full lg:w-[45vw] flex justify-center lg:justify-start gap-6 underline text-corpo-orange">
                     <ul className="flex flex-col gap-6 text-center lg:text-left">
-                        <li><a href="/Visit Cremona_Brand Guide_V6.pdf" download>Guida del brand</a></li>
-                        <li><Link href="/accessibility">Dichiarazione di accessibilità</Link></li>
-                        <li><a target="_blank" href={links['amministrazione_trasparente']}>Amministrazione
-                            trasparente</a></li>
-                        <li><Link href="/partner">Partner</Link></li>
+                        <li><a href="/Visit Cremona_Brand Guide_V6.pdf" download target="_blank"
+                               rel="noopener noreferrer">Guida del brand</a></li>
+                        <li><a rel="noopener noreferrer" target="_blank"
+                            href='https://form.agid.gov.it/c_d150/visitcremona.com/dichiarazione'>Dichiarazione di accessibilità</a>
+                        </li>
+                        <li><a target="_blank" rel="noopener noreferrer" href='https://trasparenza.comune.cremona.it/'>
+                            Amministrazione trasparente</a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href='https://dati.turismocremona.it/'>Osservatorio
+                            Turistico Cremonese</a></li>
                     </ul>
                     <ul className="flex flex-col gap-6 text-center lg:text-left">
-                        <li><Link href="/who">Chi siamo</Link></li>
-                        <li><Link href="/contact">Richiesta di informazioni</Link></li>
-                        <li><a target="_blank" href={links['osservatorio_cremona']}>Osservatorio di Cremona</a></li>
+                        <li><Link
+                            href='/who'>Chi siamo</Link>
+                        </li>
+                        <li><Link href="/partner">Partner</Link></li>
+                        <li><Link
+                            href='/contact'>Richiesta di informazioni</Link>
+                        </li>
                     </ul>
                 </div>
             </div>

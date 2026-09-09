@@ -80,14 +80,15 @@ export default function Menu({links} : {links:any}) {
                             </Link>
                         </li>
                         <li className="py-3">
-                            <Link
-                                href="/accessibility"
-                                onNavigate={() => setShowMenu('close')}
+                            <a
+                                href="https://form.agid.gov.it/c_d150/visitcremona.com/dichiarazione"
                             >
                                 Dichiarazione di accessibilità
-                            </Link>
+                            </a>
                         </li>
-                        <li className="py-3"><a target="_blank" href={links['amministrazione_trasparente']}>Amministrazione trasparente</a></li>
+                        <li className="py-3">
+                            <a target="_blank" href='https://trasparenza.comune.cremona.it/'>Amministrazione trasparente</a>
+                        </li>
                         <li className="py-3">
                             <Link
                                 href="/contact"
